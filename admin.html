@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Admin - View Results</h2>
+<div id="results"></div>
+
+<script>
+let resultsDiv = document.getElementById("results");
+let results = JSON.parse(localStorage.getItem("results")) || [];
+
+results.forEach(r => {
+  resultsDiv.innerHTML += `
+    <p>
+      User: ${r.user} |
+      Correct: ${r.correct} |
+      Wrong: ${r.wrong}
+    </p>
+    <hr>
+  `;
+});
+</script>
+
+</body>
+</html>
