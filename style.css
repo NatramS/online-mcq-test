@@ -1,0 +1,15 @@
+body {
+  font-family: Arial;
+  margin: 40px;
+}
+
+h2 {
+  color: darkblue;
+}
+
+button {
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border: none;
+}
