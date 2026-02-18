@@ -4,12 +4,12 @@ import { getFirestore, collection, addDoc } from "https://www.gstatic.com/fireba
 
 // 🔹 Replace with your actual Firebase config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_BUCKET",
-  messagingSenderId: "YOUR_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAP0AaZOw0fgojRTVwRVf57Dgjm0m9NC-w",
+  authDomain: "mcq-assessments.firebaseapp.com",
+  projectId: "mcq-assessments",
+  storageBucket: "mcq-assessments.firebasestorage.app",
+  messagingSenderId: "606020010421",
+  appId: "1:606020010421:web:daa6d4701e41f1cc3319fc"
 };
 
 // Initialize Firebase
