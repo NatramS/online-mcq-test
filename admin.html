@@ -1,29 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<h2>Admin - View Results</h2>
+<button onclick="downloadExcel()">Download Excel</button>
 <div id="results"></div>
 
 <script>
 let resultsDiv = document.getElementById("results");
 let results = JSON.parse(localStorage.getItem("results")) || [];
 
-results.forEach(r => {
-  resultsDiv.innerHTML += `
-    <p>
-      User: ${r.user} |
-      Correct: ${r.correct} |
-      Wrong: ${r.wrong}
-    </p>
-    <hr>
-  `;
-});
-</script>
+if (results.length === 0) {
+  resultsDiv.innerHTML = "<h3>No results available</h3>";
+} else {
+  results.forEach(r => {
+    resultsDiv.innerHTML += `
+      <div style="border:1px solid black; padding:10px; margin:10px;">
+        <p><strong>Candidate:</strong> ${r.user}</p>
+        <p><strong>Total:</strong> ${r.total}</p>
+        <p><strong>Correct:</strong> ${r.correct}</p>
+        <p><strong>Wrong:</strong> ${r.wrong}</p>
+        <p><strong>Date:</strong> ${r.date}</p>
+      </div>
+    `;
+  });
+}
 
-</body>
-</html>
+function downloadExcel() {
+  let csv = "Candidate,Total,Correct,Wrong,Date\n";
+
+  results.forEach(r => {
+    csv += `${r.user},${r.total},${r.correct},${r.wrong},${r.date}\n`;
+  });
+
+  let blob = new Blob([csv], { type: "text/csv" });
+  let url = window.URL.createObjectURL(blob);
+
+  let a = document.createElement("a");
+  a.href = url;
+  a.download = "Assessment_Results.csv";
+  a.click();
+}
+</script>
