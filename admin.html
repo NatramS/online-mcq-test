@@ -1,13 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+
+<h2>Admin Dashboard</h2>
+
 <button onclick="downloadExcel()">Download Excel</button>
 <div id="results"></div>
-<script>
-let resultsDiv = document.getElementById("results");
-let results = JSON.parse(localStorage.getItem("results")) || [];
 
-if (results.length === 0) {
-  resultsDiv.innerHTML = "<h3>No results available</h3>";
-} else {
-  results.forEach(r => {
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// 🔹 Replace with your Firebase config
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_BUCKET",
+  messagingSenderId: "YOUR_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+let resultsDiv = document.getElementById("results");
+let allResults = [];
+
+async function loadResults() {
+  const querySnapshot = await getDocs(collection(db, "results"));
+
+  if (querySnapshot.empty) {
+    resultsDiv.innerHTML = "<h3>No results available</h3>";
+    return;
+  }
+
+  querySnapshot.forEach((doc) => {
+    const r = doc.data();
+    allResults.push(r);
+
     resultsDiv.innerHTML += `
       <div style="border:1px solid black; padding:10px; margin:10px;">
         <p><strong>Candidate:</strong> ${r.user}</p>
@@ -20,10 +59,12 @@ if (results.length === 0) {
   });
 }
 
-function downloadExcel() {
+loadResults();
+
+window.downloadExcel = function() {
   let csv = "Candidate,Total,Correct,Wrong,Date\n";
 
-  results.forEach(r => {
+  allResults.forEach(r => {
     csv += `${r.user},${r.total},${r.correct},${r.wrong},${r.date}\n`;
   });
 
@@ -34,5 +75,9 @@ function downloadExcel() {
   a.href = url;
   a.download = "Assessment_Results.csv";
   a.click();
-}
+};
+
 </script>
+
+</body>
+</html>
