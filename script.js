@@ -79,9 +79,23 @@ function loadQuestions() {
     quizDiv.innerHTML += html;
   });
 
+  // Submit button
   quizDiv.innerHTML += `
     <button onclick="submitTest()">Submit Test</button>
   `;
+
+  // ⭐ Progress Tracker
+  document.addEventListener("change", () => {
+    let answered = document.querySelectorAll(
+      "input[type='radio']:checked"
+    ).length;
+
+    let progressElement = document.getElementById("progress");
+    if (progressElement) {
+      progressElement.innerText =
+        `Answered: ${answered} / ${questions.length}`;
+    }
+  });
 }
 
 // Call attempt validation
@@ -143,6 +157,7 @@ window.goBack = function () {
   localStorage.removeItem("currentUser");
   window.location.href = "index.html";
 };
+
 // Timer (30 minutes)
 let timeLeft = 30 * 60;
 
