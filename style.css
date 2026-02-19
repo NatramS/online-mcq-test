@@ -1,15 +1,31 @@
 body {
-  font-family: Arial;
-  margin: 40px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f6fa;
+  margin: 0;
 }
 
-h2 {
-  color: darkblue;
+.header {
+  background: #1f3c88;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#quiz {
+  padding: 20px;
+}
+
+.submit-section {
+  text-align: center;
+  padding: 20px;
 }
 
 button {
-  padding: 10px;
-  background-color: blue;
+  background: #1f3c88;
   color: white;
+  padding: 12px 25px;
   border: none;
+  cursor: pointer;
+  font-size: 16px;
 }
