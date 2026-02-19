@@ -143,3 +143,21 @@ window.goBack = function () {
   localStorage.removeItem("currentUser");
   window.location.href = "index.html";
 };
+// Timer (30 minutes)
+let timeLeft = 30 * 60;
+
+let timer = setInterval(() => {
+  let minutes = Math.floor(timeLeft / 60);
+  let seconds = timeLeft % 60;
+
+  document.getElementById("timer").innerText =
+    `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+  timeLeft--;
+
+  if (timeLeft < 0) {
+    clearInterval(timer);
+    alert("Time is up! Submitting your test.");
+    submitTest();
+  }
+}, 1000);
