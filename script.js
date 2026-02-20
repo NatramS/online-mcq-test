@@ -5,7 +5,7 @@ from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, query, where, getDocs } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔹 Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAP0AaZOw0fgojRTVwRVf57Dgjm0m9NC-w",
   authDomain: "mcq-assessments.firebaseapp.com",
@@ -15,15 +15,13 @@ const firebaseConfig = {
   appId: "1:606020010421:web:daa6d4701e41f1cc3319fc"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Get current user
 let currentUser = localStorage.getItem("currentUser");
 let quizDiv = document.getElementById("quiz");
 
-// 🔒 Check if user already attempted
+// Prevent reattempt
 async function checkAttempt() {
 
   if (!currentUser) {
@@ -31,45 +29,42 @@ async function checkAttempt() {
     return;
   }
 
-  try {
+  const qRef = query(
+    collection(db, "results"),
+    where("user", "==", currentUser)
+  );
 
-    const qRef = query(
-      collection(db, "results"),
-      where("user", "==", currentUser)
-    );
+  const snapshot = await getDocs(qRef);
 
-    const querySnapshot = await getDocs(qRef);
-
-    if (!querySnapshot.empty) {
-
-      quizDiv.innerHTML = `
-        <h3>You have already completed this assessment.</h3>
-        <p>Reattempt is not allowed.</p>
-        <button onclick="goBack()">Close</button>
-      `;
-
-    } else {
-      loadQuestions();
-    }
-
-  } catch (error) {
-    console.error("Error checking attempt:", error);
-    alert("Error validating attempt. Please try again.");
+  if (!snapshot.empty) {
+    quizDiv.innerHTML = `
+      <h3>You already completed this assessment</h3>
+      <button onclick="goBack()">Close</button>
+    `;
+  } else {
+    loadQuestions();
   }
 }
 
 // Load questions
 function loadQuestions() {
 
+  quizDiv.innerHTML = "";
+
   questions.forEach((q, index) => {
 
-    let html = `<div>
-        <p>${index + 1}. (${q.topic}) ${q.question}</p>`;
+    let html = `
+      <div class="question-box">
+        <p><b>${index + 1}. (${q.topic}) ${q.question}</b></p>
+    `;
 
     q.options.forEach((opt, i) => {
       html += `
-        <input type="radio" name="q${index}" value="${i}">
-        ${opt}<br>`;
+        <label>
+          <input type="radio" name="q${index}" value="${i}">
+          ${opt}
+        </label><br>
+      `;
     });
 
     html += `</div><hr>`;
@@ -77,24 +72,20 @@ function loadQuestions() {
   });
 
   quizDiv.innerHTML += `
-    <button onclick="submitTest()">Submit Test</button>
+    <button onclick="submitTest()">Submit Assessment</button>
   `;
 
-  // Progress Tracker
+  // Progress
   document.addEventListener("change", () => {
     let answered = document.querySelectorAll(
       "input[type='radio']:checked"
     ).length;
 
-    let progressElement = document.getElementById("progress");
-    if (progressElement) {
-      progressElement.innerText =
-        `Answered: ${answered} / ${questions.length}`;
-    }
+    document.getElementById("progress").innerText =
+      `Answered: ${answered} / ${questions.length}`;
   });
 }
 
-// Call attempt validation
 checkAttempt();
 
 // Submit test
@@ -110,83 +101,82 @@ window.submitTest = async function () {
       `input[name="q${index}"]:checked`
     );
 
-    if (selected) {
-
-      let selectedValue = parseInt(selected.value);
-
-      if (selectedValue === q.answer) {
-        correct++;
-      } else {
-        wrong++;
-
-        wrongQuestions.push({
-          question: q.question,
-          topic: q.topic,
-          selected: q.options[selectedValue],
-          correct: q.options[q.answer]
-        });
-      }
-
-    } else {
-
+    if (!selected) {
       wrong++;
 
       wrongQuestions.push({
+        number: index + 1,
         question: q.question,
         topic: q.topic,
-        selected: "Not Answered",
-        correct: q.options[q.answer]
+        yourAnswer: "Not Answered",
+        correctAnswer: q.options[q.answer]
+      });
+
+      return;
+    }
+
+    let selectedIndex = parseInt(selected.value);
+
+    if (selectedIndex === q.answer) {
+      correct++;
+    } else {
+      wrong++;
+
+      wrongQuestions.push({
+        number: index + 1,
+        question: q.question,
+        topic: q.topic,
+        yourAnswer: q.options[selectedIndex],
+        correctAnswer: q.options[q.answer]
       });
     }
+
   });
 
-  let result = {
+  let percentage = ((correct / questions.length) * 100).toFixed(2);
+
+  await addDoc(collection(db, "results"), {
     user: currentUser,
+    correct,
+    wrong,
     total: questions.length,
-    correct: correct,
-    wrong: wrong,
-    percentage: ((correct / questions.length) * 100).toFixed(2),
+    percentage,
     date: new Date().toLocaleString()
-  };
+  });
 
-  try {
+  // Result UI
+  let resultHTML = `
+    <h2>Assessment Completed</h2>
+    <p>Total Questions: ${questions.length}</p>
+    <p>Correct: ${correct}</p>
+    <p>Wrong: ${wrong}</p>
+    <p>Score: ${percentage}%</p>
+    <hr>
+    <h3>Questions You Got Wrong</h3>
+  `;
 
-    await addDoc(collection(db, "results"), result);
+  if (wrongQuestions.length === 0) {
+    resultHTML += `<p>Excellent! All answers are correct.</p>`;
+  } else {
 
-    let reviewHtml = `
-      <h3>Assessment Submitted Successfully</h3>
-      <p>Total Questions: ${questions.length}</p>
-      <p>Correct Answers: ${correct}</p>
-      <p>Wrong Answers: ${wrong}</p>
-      <p>Percentage: ${result.percentage}%</p>
-      <h3>Questions You Missed</h3>
-    `;
-
-    if (wrongQuestions.length === 0) {
-      reviewHtml += `<p>Excellent! You answered all questions correctly.</p>`;
-    }
-
-    wrongQuestions.forEach((w, index) => {
-      reviewHtml += `
-        <div class="review-box">
-          <p><strong>Question ${index + 1}:</strong> (${w.topic}) ${w.question}</p>
-          <p><strong>Your Answer:</strong> ${w.selected}</p>
-          <p><strong>Correct Answer:</strong> ${w.correct}</p>
+    wrongQuestions.forEach(q => {
+      resultHTML += `
+        <div style="background:#fff3f3;padding:15px;margin-bottom:10px;border-radius:6px;">
+          <p><b>Question ${q.number}</b></p>
+          <p>${q.question}</p>
+          <p style="color:red;"><b>Your Answer:</b> ${q.yourAnswer}</p>
+          <p style="color:green;"><b>Correct Answer:</b> ${q.correctAnswer}</p>
         </div>
-        <hr>
       `;
     });
 
-    reviewHtml += `
-      <button onclick="goBack()">Close Assessment</button>
-    `;
-
-    quizDiv.innerHTML = reviewHtml;
-
-  } catch (error) {
-    console.error("Error saving result:", error);
-    alert("Error submitting test. Please try again.");
   }
+
+  resultHTML += `
+    <button onclick="goBack()">Close Assessment</button>
+  `;
+
+  quizDiv.innerHTML = resultHTML;
 };
 
 // Close
@@ -195,7 +185,7 @@ window.goBack = function () {
   window.location.href = "index.html";
 };
 
-// Timer (30 minutes)
+// Timer
 let timeLeft = 30 * 60;
 
 let timer = setInterval(() => {
@@ -203,17 +193,13 @@ let timer = setInterval(() => {
   let minutes = Math.floor(timeLeft / 60);
   let seconds = timeLeft % 60;
 
-  let timerElement = document.getElementById("timer");
-  if (timerElement) {
-    timerElement.innerText =
-      `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  }
+  document.getElementById("timer").innerText =
+    `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 
   timeLeft--;
 
   if (timeLeft < 0) {
     clearInterval(timer);
-    alert("Time is up! Submitting your test.");
     submitTest();
   }
 
