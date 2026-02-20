@@ -1,8 +1,8 @@
 // Import Firebase modules
-import { initializeApp }
+import { initializeApp } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 
-import { getFirestore, collection, addDoc, query, where, getDocs }
+import { getFirestore, collection, addDoc, query, where, getDocs } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // Firebase config
@@ -30,32 +30,26 @@ async function checkAttempt() {
     return;
   }
 
-  try {
+  const qRef = query(
+    collection(db, "results"),
+    where("user", "==", currentUser)
+  );
 
-    const qRef = query(
-      collection(db, "results"),
-      where("user", "==", currentUser)
-    );
+  const querySnapshot = await getDocs(qRef);
 
-    const querySnapshot = await getDocs(qRef);
+  if (!querySnapshot.empty) {
 
-    if (!querySnapshot.empty) {
-
-      quizDiv.innerHTML = `
-        <h3>You have already completed this assessment.</h3>
-        <button onclick="goBack()">Close</button>
-      `;
-
-    } else {
-      loadQuestions();
-    }
-
-  } catch (error) {
-    console.error("Error:", error);
+    quizDiv.innerHTML = `
+      <h3>You already attempted this assessment.</h3>
+      <button onclick="goBack()">Close</button>
+    `;
+    return;
   }
+
+  loadQuestions();
 }
 
-// Load Questions
+// Load questions
 function loadQuestions() {
 
   quizDiv.innerHTML = "";
@@ -63,8 +57,8 @@ function loadQuestions() {
   questions.forEach((q, index) => {
 
     let html = `
-    <div class="question-box">
-      <p><b>${index + 1}. (${q.topic}) ${q.question}</b></p>
+      <div class="question-box">
+        <p><strong>${index + 1}. (${q.topic})</strong> ${q.question}</p>
     `;
 
     q.options.forEach((opt, i) => {
@@ -76,7 +70,7 @@ function loadQuestions() {
       `;
     });
 
-    html += "</div><hr>";
+    html += `</div><hr>`;
     quizDiv.innerHTML += html;
   });
 
@@ -84,31 +78,33 @@ function loadQuestions() {
     <button onclick="submitTest()">Submit Test</button>
   `;
 
-  // Progress tracker
+  updateProgress();
+}
+
+// Progress tracker
+function updateProgress() {
+
   document.addEventListener("change", () => {
 
     let answered = document.querySelectorAll(
       "input[type='radio']:checked"
     ).length;
 
-    let progress = document.getElementById("progress");
-
-    if (progress) {
-      progress.innerText =
-        `Answered: ${answered} / ${questions.length}`;
-    }
-
+    document.getElementById("progress").innerText =
+      `Answered: ${answered} / ${questions.length}`;
   });
 }
 
+// Start
 checkAttempt();
 
-// Submit Test
+// Submit test
 window.submitTest = async function () {
 
   let correct = 0;
   let wrong = 0;
-  let reviewData = [];
+  let wrongQuestions = [];
+  let allAnswers = [];
 
   questions.forEach((q, index) => {
 
@@ -116,31 +112,34 @@ window.submitTest = async function () {
       `input[name="q${index}"]:checked`
     );
 
-    let selectedText = "Not Answered";
-    let selectedIndex = null;
+    let selectedAnswer = "Not Answered";
 
     if (selected) {
-      selectedIndex = parseInt(selected.value);
-      selectedText = q.options[selectedIndex];
+      selectedAnswer = q.options[selected.value];
     }
 
-    let correctText = q.options[q.answer];
-    let isCorrect = selectedIndex === q.answer;
+    let correctAnswer = q.options[q.answer];
 
-    if (isCorrect) {
+    // Save all answers for Excel
+    allAnswers.push({
+      question: q.question,
+      topic: q.topic,
+      selected: selectedAnswer,
+      correct: correctAnswer
+    });
+
+    if (selected && parseInt(selected.value) === q.answer) {
       correct++;
     } else {
       wrong++;
-    }
 
-    reviewData.push({
-      questionNumber: index + 1,
-      topic: q.topic,
-      question: q.question,
-      selectedAnswer: selectedText,
-      correctAnswer: correctText,
-      status: isCorrect ? "Correct" : "Wrong"
-    });
+      wrongQuestions.push({
+        question: q.question,
+        topic: q.topic,
+        selected: selectedAnswer,
+        correct: correctAnswer
+      });
+    }
 
   });
 
@@ -151,7 +150,8 @@ window.submitTest = async function () {
     wrong: wrong,
     percentage: ((correct / questions.length) * 100).toFixed(2),
     date: new Date().toLocaleString(),
-    answers: reviewData
+    wrongQuestions: wrongQuestions,
+    allAnswers: allAnswers
   };
 
   try {
@@ -161,45 +161,46 @@ window.submitTest = async function () {
     showReview(result);
 
   } catch (error) {
-    console.error("Error:", error);
-    alert("Error submitting test");
+    console.error(error);
+    alert("Error submitting test.");
   }
-
 };
 
-// Show Review
+// Show review after exam
 function showReview(result) {
 
-  let html = `
+  let reviewHTML = `
     <h2>Assessment Result</h2>
-    <p><b>User:</b> ${result.user}</p>
-    <p>Total Questions: ${result.total}</p>
-    <p>Correct: ${result.correct}</p>
-    <p>Wrong: ${result.wrong}</p>
-    <p>Score: ${result.percentage}%</p>
-    <hr>
-    <h3>Answer Review</h3>
+    <p><strong>Total:</strong> ${result.total}</p>
+    <p><strong>Correct:</strong> ${result.correct}</p>
+    <p><strong>Wrong:</strong> ${result.wrong}</p>
+    <p><strong>Score:</strong> ${result.percentage}%</p>
+
+    <h3>Review Questions</h3>
   `;
 
-  result.answers.forEach(q => {
+  result.allAnswers.forEach((q, index) => {
 
-    let color = q.status === "Correct" ? "#d4edda" : "#f8d7da";
+    let color = q.selected === q.correct ? "green" : "red";
 
-    html += `
-      <div style="background:${color}; padding:15px; margin-bottom:10px; border-radius:8px;">
-        <p><b>Q${q.questionNumber}. (${q.topic}) ${q.question}</b></p>
-        <p><b>Your Answer:</b> ${q.selectedAnswer}</p>
-        <p><b>Correct Answer:</b> ${q.correctAnswer}</p>
-        <p><b>Status:</b> ${q.status}</p>
+    reviewHTML += `
+      <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+        <p><strong>Q${index + 1}:</strong> ${q.question}</p>
+        <p style="color:${color}">
+        Your Answer: ${q.selected}
+        </p>
+        <p>
+        Correct Answer: ${q.correct}
+        </p>
       </div>
     `;
   });
 
-  html += `
-    <button onclick="goBack()">Close Assessment</button>
+  reviewHTML += `
+    <button onclick="goBack()">Close</button>
   `;
 
-  quizDiv.innerHTML = html;
+  quizDiv.innerHTML = reviewHTML;
 }
 
 // Close
@@ -216,18 +217,14 @@ let timer = setInterval(() => {
   let minutes = Math.floor(timeLeft / 60);
   let seconds = timeLeft % 60;
 
-  let timerElement = document.getElementById("timer");
-
-  if (timerElement) {
-    timerElement.innerText =
-      `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  }
+  document.getElementById("timer").innerText =
+    `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 
   timeLeft--;
 
   if (timeLeft < 0) {
     clearInterval(timer);
-    alert("Time is up! Submitting your test.");
+    alert("Time up. Auto submitting test.");
     submitTest();
   }
 
