@@ -6,58 +6,58 @@ const questions = [
 
 {
   topic: "Identity and Access Management",
-  question: "What is the primary purpose of OCI IAM?",
+  question: "Scenario: Your company wants only the cloud operations team to create and manage VCNs in a specific compartment while developers should only launch compute instances. What should you configure?",
   options: [
-    "To create virtual machines",
-    "To manage user authentication and authorization",
-    "To monitor network traffic",
-    "To manage storage volumes"
+    "Create two separate tenancies",
+    "Create IAM groups and attach compartment-level policies",
+    "Create multiple VCNs",
+    "Assign public IPs to all users"
   ],
   answer: 1
 },
 {
   topic: "Identity and Access Management",
-  question: "What is required to grant access to a user in OCI?",
+  question: "Scenario: A new intern joined your cloud team and needs read-only access to all OCI resources for auditing. What is the best approach?",
   options: [
-    "Policy",
-    "Subnet",
-    "Load Balancer",
-    "Fault Domain"
+    "Add the user to Administrators group",
+    "Create a group with inspect permissions",
+    "Give tenancy full access",
+    "Create a new compartment"
+  ],
+  answer: 1
+},
+{
+  topic: "Identity and Access Management",
+  question: "Scenario: You want to restrict database administrators so they can manage databases but not networking components. What should you implement?",
+  options: [
+    "IAM policies limiting access to database-family",
+    "Create separate availability domain",
+    "Attach NAT gateway",
+    "Use object storage"
   ],
   answer: 0
 },
 {
   topic: "Identity and Access Management",
-  question: "Which component defines a set of permissions in OCI?",
+  question: "Scenario: Multiple teams are working on the same OCI tenancy. You want to logically group users by roles like DevOps, Security, and Networking. What should you use?",
   options: [
-    "Group",
-    "Policy",
-    "Tenancy",
-    "VCN"
+    "VCNs",
+    "Groups",
+    "Subnets",
+    "Route tables"
   ],
   answer: 1
 },
 {
   topic: "Identity and Access Management",
-  question: "Users in OCI must belong to which entity to inherit permissions?",
+  question: "Scenario: Your organization wants centralized identity management integrated with corporate login. Which OCI feature supports this?",
   options: [
-    "Subnet",
-    "Group",
-    "VCN",
-    "Block Volume"
+    "Federation with identity provider",
+    "Internet Gateway",
+    "Load Balancer",
+    "Object Storage"
   ],
-  answer: 1
-},
-{
-  topic: "Identity and Access Management",
-  question: "Scenario: You want developers to manage compute instances but not networking. What should you configure?",
-  options: [
-    "Create separate VCN",
-    "Create IAM policy allowing manage instance-family",
-    "Create new tenancy",
-    "Attach internet gateway"
-  ],
-  answer: 1
+  answer: 0
 },
 
 /* ================================
@@ -66,231 +66,111 @@ const questions = [
 
 {
   topic: "VCN",
-  question: "What is a VCN in OCI?",
+  question: "Scenario: A company wants to host a multi-tier application where web, app, and database tiers are isolated but communicate internally. What should be designed?",
   options: [
-    "Virtual Cloud Network",
-    "Virtual Compute Node",
-    "Volume Control Node",
-    "Virtual Cluster Network"
-  ],
-  answer: 0
-},
-{
-  topic: "VCN",
-  question: "VCN is similar to which AWS service?",
-  options: [
-    "EC2",
-    "VPC",
-    "S3",
-    "IAM"
+    "Single subnet architecture",
+    "Multiple subnets inside one VCN",
+    "Separate tenancies",
+    "Only NSGs"
   ],
   answer: 1
 },
 {
   topic: "VCN",
-  question: "Which component allows communication between subnets?",
+  question: "Scenario: During VCN creation, the network team must ensure future subnet expansion. What should they carefully design?",
   options: [
-    "Route Table",
-    "Object Storage",
-    "Block Volume",
-    "Policy"
+    "IAM groups",
+    "CIDR block planning",
+    "Object storage",
+    "Backend sets"
   ],
-  answer: 0
+  answer: 1
 },
 {
   topic: "VCN",
-  question: "What is mandatory when creating a VCN?",
+  question: "Scenario: Two applications in different subnets must communicate privately within OCI. What enables this communication?",
   options: [
-    "CIDR block",
-    "Load Balancer",
-    "IAM policy",
-    "Fault Domain"
-  ],
-  answer: 0
-},
-{
-  topic: "VCN",
-  question: "Scenario: You need to isolate production and development workloads. What should you use?",
-  options: [
-    "Single subnet",
-    "Multiple VCNs or subnets",
-    "Same security list",
-    "Same route table"
-  ],
-  answer: 1
-},
-
-/* ================================
-3. Security Groups (Security Lists)
-================================ */
-
-{
-  topic: "Security Groups",
-  question: "Security Lists in OCI control:",
-  options: [
-    "Storage size",
-    "Network traffic",
-    "User login",
-    "Compartment quota"
-  ],
-  answer: 1
-},
-{
-  topic: "Security Groups",
-  question: "Ingress rule controls:",
-  options: [
-    "Outgoing traffic",
-    "Incoming traffic",
-    "Block storage",
-    "IAM users"
-  ],
-  answer: 1
-},
-{
-  topic: "Security Groups",
-  question: "Egress rule controls:",
-  options: [
-    "Incoming traffic",
-    "Outgoing traffic",
-    "Load balancer health",
-    "Tenancy settings"
-  ],
-  answer: 1
-},
-{
-  topic: "Security Groups",
-  question: "Security List is applied at:",
-  options: [
-    "Instance level",
-    "Subnet level",
-    "Tenancy level",
-    "Policy level"
-  ],
-  answer: 1
-},
-{
-  topic: "Security Groups",
-  question: "Scenario: You want to allow HTTP traffic from internet to web server. What should you allow?",
-  options: [
-    "Ingress TCP 80 from 0.0.0.0/0",
-    "Egress TCP 22",
-    "Block all traffic",
-    "Remove route table"
-  ],
-  answer: 0
-},
-
-/* ================================
-4. NSG
-================================ */
-
-{
-  topic: "NSG",
-  question: "NSG stands for:",
-  options: [
-    "Network Security Group",
-    "Node Storage Group",
-    "Network Subnet Gateway",
-    "Node Service Gateway"
-  ],
-  answer: 0
-},
-{
-  topic: "NSG",
-  question: "NSG is applied at:",
-  options: [
-    "Subnet level",
-    "Instance VNIC level",
-    "Tenancy level",
-    "Block volume level"
-  ],
-  answer: 1
-},
-{
-  topic: "NSG",
-  question: "Main advantage of NSG over Security List?",
-  options: [
-    "More granular control",
-    "Faster storage",
-    "More IAM policies",
-    "More compartments"
-  ],
-  answer: 0
-},
-{
-  topic: "NSG",
-  question: "NSG allows:",
-  options: [
-    "Stateless and Stateful rules",
-    "Only IAM policies",
-    "Only route tables",
-    "Only block storage"
-  ],
-  answer: 0
-},
-{
-  topic: "NSG",
-  question: "Scenario: Two instances in same subnet need different security rules. What should you use?",
-  options: [
-    "Separate VCN",
-    "NSG",
-    "Same security list",
-    "New tenancy"
-  ],
-  answer: 1
-},
-
-/* ================================
-5. CIDR / Public / Private
-================================ */
-
-{
-  topic: "CIDR and Subnets",
-  question: "CIDR defines:",
-  options: [
-    "IP address range",
-    "Storage type",
-    "User role",
-    "Load balancing"
-  ],
-  answer: 0
-},
-{
-  topic: "CIDR and Subnets",
-  question: "Private subnet does NOT have:",
-  options: [
-    "Route table",
-    "Public IP",
-    "Security list",
-    "CIDR"
-  ],
-  answer: 1
-},
-{
-  topic: "CIDR and Subnets",
-  question: "Public subnet requires:",
-  options: [
+    "VCN internal routing",
     "Internet Gateway",
-    "Block volume",
-    "IAM policy",
-    "Object storage"
+    "Public IP",
+    "Object Storage"
   ],
   answer: 0
 },
 {
-  topic: "CIDR and Subnets",
-  question: "Which CIDR is valid?",
+  topic: "VCN",
+  question: "Scenario: Your organization wants complete network isolation between production and development environments. What is recommended?",
   options: [
-    "10.0.0.0/16",
-    "500.0.0.0/16",
-    "999.1.1.1/24",
-    "10.0.0.0/50"
+    "Separate VCNs",
+    "Same subnet",
+    "Same route table",
+    "Shared public IP"
   ],
   answer: 0
 },
 {
-  topic: "CIDR and Subnets",
-  question: "Scenario: You want DB server not accessible from internet. What should you use?",
+  topic: "VCN",
+  question: "Scenario: Network engineers need to control how traffic flows between subnets and gateways. Which component manages this?",
+  options: [
+    "Route Tables",
+    "Block Volumes",
+    "IAM Policies",
+    "Object Storage"
+  ],
+  answer: 0
+},
+
+/* ================================
+3. Security Lists / NSG / CIDR Subnets
+================================ */
+
+{
+  topic: "Security and Subnets",
+  question: "Scenario: Your web server must allow traffic from the internet on port 443 but block all other ports. What should you configure?",
+  options: [
+    "Ingress rule allowing TCP 443",
+    "Egress rule only",
+    "Remove route table",
+    "Attach NAT gateway"
+  ],
+  answer: 0
+},
+{
+  topic: "Security and Subnets",
+  question: "Scenario: Two applications run in the same subnet but require different security rules. What is the best solution?",
+  options: [
+    "Create new VCN",
+    "Use Network Security Groups",
+    "Use same security list",
+    "Delete subnet"
+  ],
+  answer: 1
+},
+{
+  topic: "Security and Subnets",
+  question: "Scenario: A database server must only allow connections from an application server. What is the best security approach?",
+  options: [
+    "Allow 0.0.0.0/0",
+    "Allow application subnet CIDR",
+    "Attach internet gateway",
+    "Use public subnet"
+  ],
+  answer: 1
+},
+{
+  topic: "Security and Subnets",
+  question: "Scenario: You are designing subnet IP ranges for future scaling of workloads. What should be carefully selected?",
+  options: [
+    "CIDR block allocation",
+    "IAM policies",
+    "Object storage bucket",
+    "Fault domain"
+  ],
+  answer: 0
+},
+{
+  topic: "Security and Subnets",
+  question: "Scenario: A backend database should not be accessible from the internet. Which design is correct?",
   options: [
     "Public subnet",
     "Private subnet",
@@ -301,303 +181,423 @@ const questions = [
 },
 
 /* ================================
-6. Internet Gateway
+4. Internet Gateway
 ================================ */
 
 {
   topic: "Internet Gateway",
-  question: "Internet Gateway allows:",
+  question: "Scenario: Your web application must be accessible globally from the internet. Which OCI component is required?",
   options: [
-    "Private communication",
-    "Internet access",
-    "Storage expansion",
-    "IAM authentication"
+    "Internet Gateway",
+    "Service Gateway",
+    "DRG",
+    "Block Storage"
   ],
-  answer: 1
+  answer: 0
 },
 {
   topic: "Internet Gateway",
-  question: "It must be attached to:",
+  question: "Scenario: Even after attaching an Internet Gateway, users cannot access the web server. What is most likely missing?",
+  options: [
+    "Route table rule",
+    "IAM group",
+    "Object storage",
+    "Fault domain"
+  ],
+  answer: 0
+},
+{
+  topic: "Internet Gateway",
+  question: "Scenario: A public subnet must route traffic to the internet. Which route rule destination should be used?",
+  options: [
+    "0.0.0.0/0",
+    "10.0.0.0/16",
+    "192.168.1.0/24",
+    "172.16.0.0/16"
+  ],
+  answer: 0
+},
+{
+  topic: "Internet Gateway",
+  question: "Scenario: A compute instance has a public IP but still cannot access the internet. What should you verify?",
+  options: [
+    "Internet Gateway and route table",
+    "Block volume",
+    "Object storage",
+    "IAM policies"
+  ],
+  answer: 0
+},
+{
+  topic: "Internet Gateway",
+  question: "Scenario: Which resource must the Internet Gateway be attached to?",
   options: [
     "VCN",
     "Subnet",
     "Instance",
-    "Block Volume"
+    "Backend set"
   ],
   answer: 0
 },
-{
-  topic: "Internet Gateway",
-  question: "Route rule for internet traffic should target:",
-  options: [
-    "NAT",
-    "Internet Gateway",
-    "Service Gateway",
-    "DRG"
-  ],
-  answer: 1
-},
-{
-  topic: "Internet Gateway",
-  question: "Without route table rule pointing to IG:",
-  options: [
-    "Internet works",
-    "Internet fails",
-    "IAM fails",
-    "Storage fails"
-  ],
-  answer: 1
-},
-{
-  topic: "Internet Gateway",
-  question: "Scenario: Web server not reachable from internet. What should you check first?",
-  options: [
-    "IAM policy",
-    "Internet Gateway & route table",
-    "Block storage",
-    "Fault domain"
-  ],
-  answer: 1
-},
 
 /* ================================
-7. NAT Gateway
+5. NAT Gateway
 ================================ */
 
 {
   topic: "NAT Gateway",
-  question: "NAT Gateway allows:",
-  options: [
-    "Inbound internet traffic",
-    "Outbound internet traffic only",
-    "Storage encryption",
-    "IAM role assignment"
-  ],
-  answer: 1
-},
-{
-  topic: "NAT Gateway",
-  question: "NAT is used with:",
-  options: [
-    "Public subnet",
-    "Private subnet",
-    "Tenancy",
-    "Object storage"
-  ],
-  answer: 1
-},
-{
-  topic: "NAT Gateway",
-  question: "Instances using NAT require:",
-  options: [
-    "Public IP",
-    "Private IP only",
-    "Block volume",
-    "IAM group"
-  ],
-  answer: 1
-},
-{
-  topic: "NAT Gateway",
-  question: "NAT improves:",
-  options: [
-    "Security",
-    "Storage performance",
-    "IAM control",
-    "Fault domain isolation"
-  ],
-  answer: 0
-},
-{
-  topic: "NAT Gateway",
-  question: "Scenario: Private app server needs OS updates from internet. What should you use?",
+  question: "Scenario: A private application server needs to download software updates from the internet but should not accept inbound traffic. What should be used?",
   options: [
     "Internet Gateway",
     "NAT Gateway",
-    "No gateway",
-    "Load balancer"
+    "DRG",
+    "Service Gateway"
   ],
   answer: 1
 },
+{
+  topic: "NAT Gateway",
+  question: "Scenario: Which subnet typically uses NAT Gateway?",
+  options: [
+    "Public subnet",
+    "Private subnet",
+    "Management subnet",
+    "Load balancer subnet"
+  ],
+  answer: 1
+},
+{
+  topic: "NAT Gateway",
+  question: "Scenario: What is the main benefit of NAT Gateway?",
+  options: [
+    "Inbound internet traffic",
+    "Secure outbound internet access",
+    "User authentication",
+    "Database replication"
+  ],
+  answer: 1
+},
+{
+  topic: "NAT Gateway",
+  question: "Scenario: What type of IP does an instance behind NAT typically use?",
+  options: [
+    "Public IP",
+    "Private IP",
+    "Reserved IP",
+    "Floating IP"
+  ],
+  answer: 1
+},
+{
+  topic: "NAT Gateway",
+  question: "Scenario: Which route rule destination is typically used with NAT?",
+  options: [
+    "0.0.0.0/0",
+    "Private subnet CIDR",
+    "Service CIDR",
+    "VCN CIDR"
+  ],
+  answer: 0
+},
 
 /* ================================
-8. Compartments / AD / FD
+6. Compartments / AD / FD
 ================================ */
 
 {
   topic: "Compartments and Domains",
-  question: "Compartments are used for:",
+  question: "Scenario: Your organization wants separate environments for Dev, Test, and Production with controlled access. What should you use?",
   options: [
-    "Logical isolation of resources",
-    "Storage replication",
-    "Network routing",
-    "Public IP assignment"
+    "Compartments",
+    "Subnets",
+    "NSGs",
+    "Load balancers"
   ],
   answer: 0
 },
 {
   topic: "Compartments and Domains",
-  question: "Availability Domain represents:",
+  question: "Scenario: You want high availability by distributing instances across isolated hardware within one availability domain. What should you use?",
   options: [
-    "Physical data center",
-    "User group",
-    "Policy rule",
-    "Storage type"
+    "Fault Domains",
+    "Compartments",
+    "Tenancies",
+    "CIDR blocks"
   ],
   answer: 0
 },
 {
   topic: "Compartments and Domains",
-  question: "Fault Domain provides:",
+  question: "Scenario: OCI regions contain multiple data centers known as:",
   options: [
-    "Hardware isolation within AD",
-    "User access control",
-    "Storage expansion",
-    "Internet connectivity"
+    "Availability Domains",
+    "Fault Domains",
+    "Subnets",
+    "Tenancies"
   ],
   answer: 0
 },
 {
   topic: "Compartments and Domains",
-  question: "Best practice for production resources?",
+  question: "Scenario: Security teams want resource-level access control between departments. What is the recommended design?",
   options: [
-    "Single compartment",
     "Separate compartments",
-    "No AD selection",
-    "Single fault domain"
+    "Separate VCNs",
+    "Separate load balancers",
+    "Separate gateways"
   ],
-  answer: 1
+  answer: 0
 },
 {
   topic: "Compartments and Domains",
-  question: "Scenario: You want high availability within one AD. What should you use?",
+  question: "Scenario: A production system must survive hardware failure within a data center. What architecture helps?",
   options: [
-    "Multiple Fault Domains",
-    "Single Fault Domain",
-    "Same server",
-    "No AD"
+    "Multiple fault domains",
+    "Single subnet",
+    "Single instance",
+    "Single compartment"
   ],
   answer: 0
 },
 
 /* ================================
-9. Tenancy
+7. Tenancy
 ================================ */
 
 {
   topic: "Tenancy",
-  question: "Tenancy in OCI represents:",
+  question: "Scenario: When a company signs up for OCI, what is automatically created?",
   options: [
-    "Entire cloud account",
+    "Tenancy",
     "Subnet",
-    "Block storage",
+    "Instance",
+    "Load balancer"
+  ],
+  answer: 0
+},
+{
+  topic: "Tenancy",
+  question: "Scenario: The root compartment exists inside:",
+  options: [
+    "Tenancy",
+    "VCN",
+    "Subnet",
+    "Region"
+  ],
+  answer: 0
+},
+{
+  topic: "Tenancy",
+  question: "Scenario: Where are IAM policies generally defined?",
+  options: [
+    "Tenancy level",
+    "Subnet level",
+    "Instance level",
+    "Load balancer level"
+  ],
+  answer: 0
+},
+{
+  topic: "Tenancy",
+  question: "Scenario: Billing and resource limits are associated with:",
+  options: [
+    "Tenancy",
+    "Subnet",
+    "Route table",
+    "NSG"
+  ],
+  answer: 0
+},
+{
+  topic: "Tenancy",
+  question: "Scenario: A large organization wants centralized management of all OCI resources. What is the top-level container?",
+  options: [
+    "Tenancy",
+    "Compartment",
+    "Subnet",
+    "AD"
+  ],
+  answer: 0
+},
+
+/* ================================
+8. Load Balancer / Backend
+================================ */
+
+{
+  topic: "Load Balancer",
+  question: "Scenario: A web application must distribute traffic across multiple application servers automatically. What should be used?",
+  options: [
+    "Load Balancer",
+    "NAT Gateway",
+    "Service Gateway",
+    "DRG"
+  ],
+  answer: 0
+},
+{
+  topic: "Load Balancer",
+  question: "Scenario: Backend servers are grouped inside:",
+  options: [
+    "Backend Set",
+    "Subnet",
+    "VCN",
+    "NSG"
+  ],
+  answer: 0
+},
+{
+  topic: "Load Balancer",
+  question: "Scenario: Health checks in a load balancer are used to:",
+  options: [
+    "Monitor backend server availability",
+    "Create subnets",
+    "Assign IAM roles",
+    "Create CIDR blocks"
+  ],
+  answer: 0
+},
+{
+  topic: "Load Balancer",
+  question: "Scenario: Traffic must be routed only to healthy instances. What feature ensures this?",
+  options: [
+    "Health Check Policy",
+    "IAM Policy",
+    "Object Storage",
+    "Fault Domain"
+  ],
+  answer: 0
+},
+{
+  topic: "Load Balancer",
+  question: "Scenario: You deploy two backend servers across different ADs for resilience. What benefit do you get?",
+  options: [
+    "High availability",
+    "Lower storage",
+    "More IAM policies",
+    "Reduced CIDR"
+  ],
+  answer: 0
+},
+
+/* ================================
+9. Load Balancer Policies
+================================ */
+
+{
+  topic: "Load Balancer Policies",
+  question: "Scenario: Your application needs maximum performance and advanced features. Which load balancer shape is suitable?",
+  options: [
+    "Gold",
+    "Silver",
+    "Bronze",
+    "Basic"
+  ],
+  answer: 0
+},
+{
+  topic: "Load Balancer Policies",
+  question: "Scenario: A medium workload application requiring moderate performance should use:",
+  options: [
+    "Silver",
+    "Gold",
+    "Bronze",
+    "Free"
+  ],
+  answer: 0
+},
+{
+  topic: "Load Balancer Policies",
+  question: "Scenario: A small test application with minimal traffic should use:",
+  options: [
+    "Bronze",
+    "Gold",
+    "Silver",
+    "Enterprise"
+  ],
+  answer: 0
+},
+{
+  topic: "Load Balancer Policies",
+  question: "Scenario: Which policy provides the highest throughput?",
+  options: [
+    "Gold",
+    "Silver",
+    "Bronze",
+    "Standard"
+  ],
+  answer: 0
+},
+{
+  topic: "Load Balancer Policies",
+  question: "Scenario: Selecting the correct load balancer shape mainly impacts:",
+  options: [
+    "Performance and cost",
+    "IAM policies",
+    "Subnet CIDR",
+    "Object storage"
+  ],
+  answer: 0
+},
+
+/* ================================
+10. Storage Services
+================================ */
+
+{
+  topic: "OCI Storage",
+  question: "Scenario: A VM requires additional disk for application data. Which storage should you attach?",
+  options: [
+    "Block Storage",
+    "Object Storage",
+    "File Storage",
+    "Archive Storage"
+  ],
+  answer: 0
+},
+{
+  topic: "OCI Storage",
+  question: "Scenario: Multiple compute instances need shared file access. Which service is best?",
+  options: [
+    "File Storage",
+    "Block Storage",
+    "Object Storage",
+    "Boot Volume"
+  ],
+  answer: 0
+},
+{
+  topic: "OCI Storage",
+  question: "Scenario: Storing application backups and logs at scale requires:",
+  options: [
+    "Object Storage",
+    "Block Volume",
+    "NSG",
     "Route table"
   ],
   answer: 0
 },
 {
-  topic: "Tenancy",
-  question: "Root compartment is:",
+  topic: "OCI Storage",
+  question: "Scenario: Long-term archival storage with low cost should use:",
   options: [
-    "Top level compartment",
-    "Subnet",
-    "Policy",
-    "Gateway"
+    "Archive Storage",
+    "Block Storage",
+    "File Storage",
+    "Boot Volume"
   ],
   answer: 0
 },
 {
-  topic: "Tenancy",
-  question: "Policies are created at:",
+  topic: "OCI Storage",
+  question: "Scenario: Boot disk of a compute instance in OCI is stored in:",
   options: [
-    "Tenancy level",
-    "Subnet level",
-    "Block level",
-    "Instance level"
+    "Boot Volume",
+    "Object Storage",
+    "File Storage",
+    "Archive Storage"
   ],
   answer: 0
-},
-{
-  topic: "Tenancy",
-  question: "Only one tenancy per:",
-  options: [
-    "User",
-    "Organization",
-    "Subnet",
-    "VCN"
-  ],
-  answer: 1
-},
-{
-  topic: "Tenancy",
-  question: "Scenario: You want separate billing for different departments. What should you use?",
-  options: [
-    "Separate compartments",
-    "Separate VCN",
-    "Separate subnet",
-    "Separate fault domain"
-  ],
-  answer: 0
-},
-
-/* ================================
-10. Load Balancer & Storage
-================================ */
-
-{
-  topic: "Load Balancer and Storage",
-  question: "Load Balancer distributes:",
-  options: [
-    "User authentication",
-    "Traffic across backend servers",
-    "Storage volumes",
-    "IAM roles"
-  ],
-  answer: 1
-},
-{
-  topic: "Load Balancer and Storage",
-  question: "Backend set contains:",
-  options: [
-    "Policies",
-    "Backend servers",
-    "VCN",
-    "Compartment"
-  ],
-  answer: 1
-},
-{
-  topic: "Load Balancer and Storage",
-  question: "Block Storage is used for:",
-  options: [
-    "Structured object storage",
-    "VM disk storage",
-    "IAM policies",
-    "Routing"
-  ],
-  answer: 1
-},
-{
-  topic: "Load Balancer and Storage",
-  question: "Object Storage is ideal for:",
-  options: [
-    "VM boot disk",
-    "Backup and archival",
-    "Fault domain isolation",
-    "VCN routing"
-  ],
-  answer: 1
-},
-{
-  topic: "Load Balancer and Storage",
-  question: "Scenario: You need highly available web application. What should you use?",
-  options: [
-    "Single server",
-    "Load Balancer with multiple backend servers",
-    "Single subnet",
-    "Single fault domain"
-  ],
-  answer: 1
 }
 
 ];
