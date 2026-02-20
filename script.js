@@ -42,7 +42,6 @@ async function checkAttempt() {
 
     if (!querySnapshot.empty) {
 
-      // 🚫 User already attempted
       quizDiv.innerHTML = `
         <h3>You have already completed this assessment.</h3>
         <p>Reattempt is not allowed.</p>
@@ -50,8 +49,6 @@ async function checkAttempt() {
       `;
 
     } else {
-
-      // ✅ First attempt → Load questions
       loadQuestions();
     }
 
@@ -61,7 +58,7 @@ async function checkAttempt() {
   }
 }
 
-// Load questions ONLY if allowed
+// Load questions
 function loadQuestions() {
 
   questions.forEach((q, index) => {
@@ -79,12 +76,11 @@ function loadQuestions() {
     quizDiv.innerHTML += html;
   });
 
-  // Submit button
   quizDiv.innerHTML += `
     <button onclick="submitTest()">Submit Test</button>
   `;
 
-  // ⭐ Progress Tracker
+  // Progress Tracker
   document.addEventListener("change", () => {
     let answered = document.querySelectorAll(
       "input[type='radio']:checked"
@@ -101,11 +97,12 @@ function loadQuestions() {
 // Call attempt validation
 checkAttempt();
 
-// Submit test function
+// Submit test
 window.submitTest = async function () {
 
   let correct = 0;
   let wrong = 0;
+  let wrongQuestions = [];
 
   questions.forEach((q, index) => {
 
@@ -114,11 +111,32 @@ window.submitTest = async function () {
     );
 
     if (selected) {
-      if (parseInt(selected.value) === q.answer) {
+
+      let selectedValue = parseInt(selected.value);
+
+      if (selectedValue === q.answer) {
         correct++;
       } else {
         wrong++;
+
+        wrongQuestions.push({
+          question: q.question,
+          topic: q.topic,
+          selected: q.options[selectedValue],
+          correct: q.options[q.answer]
+        });
       }
+
+    } else {
+
+      wrong++;
+
+      wrongQuestions.push({
+        question: q.question,
+        topic: q.topic,
+        selected: "Not Answered",
+        correct: q.options[q.answer]
+      });
     }
   });
 
@@ -133,18 +151,37 @@ window.submitTest = async function () {
 
   try {
 
-    // 🔥 Save result to Firestore
     await addDoc(collection(db, "results"), result);
 
-    quizDiv.innerHTML = `
+    let reviewHtml = `
       <h3>Assessment Submitted Successfully</h3>
       <p>Total Questions: ${questions.length}</p>
       <p>Correct Answers: ${correct}</p>
       <p>Wrong Answers: ${wrong}</p>
       <p>Percentage: ${result.percentage}%</p>
-      <p>You cannot reattempt this test.</p>
+      <h3>Questions You Missed</h3>
+    `;
+
+    if (wrongQuestions.length === 0) {
+      reviewHtml += `<p>Excellent! You answered all questions correctly.</p>`;
+    }
+
+    wrongQuestions.forEach((w, index) => {
+      reviewHtml += `
+        <div class="review-box">
+          <p><strong>Question ${index + 1}:</strong> (${w.topic}) ${w.question}</p>
+          <p><strong>Your Answer:</strong> ${w.selected}</p>
+          <p><strong>Correct Answer:</strong> ${w.correct}</p>
+        </div>
+        <hr>
+      `;
+    });
+
+    reviewHtml += `
       <button onclick="goBack()">Close Assessment</button>
     `;
+
+    quizDiv.innerHTML = reviewHtml;
 
   } catch (error) {
     console.error("Error saving result:", error);
@@ -152,7 +189,7 @@ window.submitTest = async function () {
   }
 };
 
-// Close function
+// Close
 window.goBack = function () {
   localStorage.removeItem("currentUser");
   window.location.href = "index.html";
@@ -162,11 +199,15 @@ window.goBack = function () {
 let timeLeft = 30 * 60;
 
 let timer = setInterval(() => {
+
   let minutes = Math.floor(timeLeft / 60);
   let seconds = timeLeft % 60;
 
-  document.getElementById("timer").innerText =
-    `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  let timerElement = document.getElementById("timer");
+  if (timerElement) {
+    timerElement.innerText =
+      `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  }
 
   timeLeft--;
 
@@ -175,4 +216,5 @@ let timer = setInterval(() => {
     alert("Time is up! Submitting your test.");
     submitTest();
   }
+
 }, 1000);
