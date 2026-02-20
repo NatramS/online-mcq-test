@@ -2,24 +2,64 @@
 <html>
 <head>
   <title>Admin Dashboard</title>
+  <style>
+    body{
+      font-family: Arial;
+      margin: 30px;
+    }
+
+    .card{
+      border:1px solid #ccc;
+      padding:15px;
+      margin-bottom:15px;
+      border-radius:8px;
+      background:#f9f9f9;
+    }
+
+    button{
+      padding:8px 14px;
+      margin:5px;
+      cursor:pointer;
+    }
+
+    .delete{
+      background:red;
+      color:white;
+      border:none;
+    }
+
+    .export{
+      background:green;
+      color:white;
+      border:none;
+    }
+
+    .back{
+      background:#444;
+      color:white;
+      border:none;
+    }
+  </style>
 </head>
+
 <body>
 
 <h2>Admin Dashboard</h2>
 
-<button onclick="downloadExcel()">Download Excel</button>
-<div id="results"></div>
+<button class="export" onclick="downloadExcel()">Export Excel</button>
+<button class="back" onclick="goToLogin()">Back to Login</button>
 
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+<hr>
+
+<div id="results"></div>
 
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, deleteDoc, doc } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔹 Replace with your Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAP0AaZOw0fgojRTVwRVf57Dgjm0m9NC-w",
   authDomain: "mcq-assessments.firebaseapp.com",
@@ -35,7 +75,12 @@ const db = getFirestore(app);
 let resultsDiv = document.getElementById("results");
 let allResults = [];
 
+// Load results
 async function loadResults() {
+
+  resultsDiv.innerHTML = "Loading results...";
+  allResults = [];
+
   const querySnapshot = await getDocs(collection(db, "results"));
 
   if (querySnapshot.empty) {
@@ -43,17 +88,48 @@ async function loadResults() {
     return;
   }
 
-  querySnapshot.forEach((doc) => {
-    const r = doc.data();
+  resultsDiv.innerHTML = "";
+
+  querySnapshot.forEach((docSnap) => {
+
+    const r = docSnap.data();
+    const id = docSnap.id;
+
     allResults.push(r);
 
+    let wrongHTML = "";
+
+    if (r.wrongQuestions && r.wrongQuestions.length > 0) {
+
+      r.wrongQuestions.forEach((q, index) => {
+
+        wrongHTML += `
+        <div style="margin-left:15px;">
+          <p><strong>Question:</strong> ${q.question}</p>
+          <p><strong>Candidate Answer:</strong> ${q.selected}</p>
+          <p><strong>Correct Answer:</strong> ${q.correct}</p>
+          <hr>
+        </div>
+        `;
+      });
+
+    } else {
+      wrongHTML = "<p>All answers correct</p>";
+    }
+
     resultsDiv.innerHTML += `
-      <div style="border:1px solid black; padding:10px; margin:10px;">
+      <div class="card">
         <p><strong>Candidate:</strong> ${r.user}</p>
         <p><strong>Total:</strong> ${r.total}</p>
         <p><strong>Correct:</strong> ${r.correct}</p>
         <p><strong>Wrong:</strong> ${r.wrong}</p>
+        <p><strong>Score:</strong> ${r.percentage}%</p>
         <p><strong>Date:</strong> ${r.date}</p>
+
+        <button class="delete" onclick="deleteResult('${id}')">Delete</button>
+
+        <h4>Incorrect Answers</h4>
+        ${wrongHTML}
       </div>
     `;
   });
@@ -61,11 +137,28 @@ async function loadResults() {
 
 loadResults();
 
+// Delete record
+window.deleteResult = async function(id) {
+
+  let confirmDelete = confirm("Are you sure you want to delete this record?");
+
+  if (!confirmDelete) return;
+
+  await deleteDoc(doc(db, "results", id));
+
+  alert("Record deleted successfully");
+
+  loadResults();
+};
+
+// Export Excel
 window.downloadExcel = function() {
-  let csv = "Candidate,Total,Correct,Wrong,Date\n";
+
+  let csv =
+  "Candidate,Total,Correct,Wrong,Score,Date\n";
 
   allResults.forEach(r => {
-    csv += `${r.user},${r.total},${r.correct},${r.wrong},${r.date}\n`;
+    csv += `${r.user},${r.total},${r.correct},${r.wrong},${r.percentage},${r.date}\n`;
   });
 
   let blob = new Blob([csv], { type: "text/csv" });
@@ -75,6 +168,11 @@ window.downloadExcel = function() {
   a.href = url;
   a.download = "Assessment_Results.csv";
   a.click();
+};
+
+// Back to login
+window.goToLogin = function() {
+  window.location.href = "index.html";
 };
 
 </script>
