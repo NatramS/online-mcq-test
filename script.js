@@ -210,7 +210,7 @@ window.goBack = function () {
 };
 
 // Timer
-let timeLeft = 30 * 60;
+let timeLeft = 60 * 60;
 
 let timer = setInterval(() => {
 
