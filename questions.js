@@ -789,5 +789,229 @@ const questions = [
   ],
   answer: 0
 }
+/* ================================
+3. Additional Questions (91–110)
+================================ */
 
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database eliminates the need for?",
+  options: [
+    "Manual database management",
+    "Internet access",
+    "Applications",
+    "Users"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Which feature helps detect performance issues automatically?",
+  options: [
+    "Automatic monitoring",
+    "Manual scripts",
+    "FTP logs",
+    "Email alerts only"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Which option allows scaling CPU during workload spikes?",
+  options: [
+    "Auto Scaling",
+    "Auto Backup",
+    "Auto Networking",
+    "Auto DNS"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database supports connection through?",
+  options: [
+    "Secure TLS connection",
+    "Telnet",
+    "FTP",
+    "SMTP"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Database cloning is useful for?",
+  options: [
+    "Testing and development",
+    "Deleting data",
+    "Networking setup",
+    "DNS configuration"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Which feature protects against failures?",
+  options: [
+    "High availability architecture",
+    "Manual failover",
+    "Single node setup",
+    "Local backups only"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Which OCI service integrates with Autonomous Database for alerts?",
+  options: [
+    "Notifications service",
+    "DNS service",
+    "Email server",
+    "FTP service"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Workload management ensures?",
+  options: [
+    "Efficient resource allocation",
+    "Router configuration",
+    "Disk formatting",
+    "Subnet routing"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database simplifies?",
+  options: [
+    "Database administration",
+    "Hardware assembly",
+    "Network cabling",
+    "Disk manufacturing"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Which tool helps visualize database performance?",
+  options: [
+    "Performance Hub",
+    "Router dashboard",
+    "DNS monitor",
+    "Storage logs"
+  ],
+  answer: 0
+},
+
+{
+  topic: "AI Basics",
+  question: "AI systems analyze?",
+  options: [
+    "Large amounts of data",
+    "Only networking traffic",
+    "Only DNS queries",
+    "Disk partitions"
+  ],
+  answer: 0
+},
+{
+  topic: "AI Basics",
+  question: "Predictive analytics uses?",
+  options: [
+    "Machine learning models",
+    "Routers",
+    "Subnets",
+    "Switches"
+  ],
+  answer: 0
+},
+{
+  topic: "Credentials & Security",
+  question: "API keys should be?",
+  options: [
+    "Stored securely",
+    "Shared publicly",
+    "Posted in code repositories",
+    "Sent through email"
+  ],
+  answer: 0
+},
+{
+  topic: "Credentials & Security",
+  question: "Access policies help?",
+  options: [
+    "Control user permissions",
+    "Increase disk size",
+    "Configure routers",
+    "Restart VMs"
+  ],
+  answer: 0
+},
+{
+  topic: "Deep Links",
+  question: "Deep links can open?",
+  options: [
+    "Specific app pages",
+    "Routers",
+    "Databases directly",
+    "VM consoles"
+  ],
+  answer: 0
+},
+{
+  topic: "Events",
+  question: "Event notifications can trigger?",
+  options: [
+    "Serverless functions",
+    "Disk formatting",
+    "Manual login",
+    "Network shutdown"
+  ],
+  answer: 0
+},
+{
+  topic: "Prompt Engineering",
+  question: "Clear prompts help models?",
+  options: [
+    "Generate accurate responses",
+    "Increase storage",
+    "Configure routers",
+    "Reduce networking"
+  ],
+  answer: 0
+},
+{
+  topic: "LLM",
+  question: "LLMs are commonly used for?",
+  options: [
+    "Chatbots and text generation",
+    "Disk management",
+    "Router firmware",
+    "Subnet allocation"
+  ],
+  answer: 0
+},
+{
+  topic: "UI Integration",
+  question: "AI integration in UI improves?",
+  options: [
+    "User interaction",
+    "Disk performance",
+    "Routing tables",
+    "DNS latency"
+  ],
+  answer: 0
+},
+{
+  topic: "AI Agent Patterns",
+  question: "AI agents can automate?",
+  options: [
+    "Business workflows",
+    "Router hardware",
+    "Disk production",
+    "Network cables"
+  ],
+  answer: 0
+}
 ];
