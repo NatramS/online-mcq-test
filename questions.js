@@ -1,7 +1,7 @@
 const questions = [
 
 /* ================================
-1. OCI Autonomous Database (1–40)
+1. OCI Autonomous Database (1–50)
 ================================ */
 
 {
@@ -126,24 +126,12 @@ const questions = [
 
 {
   topic: "Autonomous Database",
-  question: "A developer wants to query data using SQL tools like SQL Developer. Is this supported?",
+  question: "Which interface allows running SQL queries directly in the browser?",
   options: [
-    "No",
-    "Yes",
-    "Only CLI",
-    "Only API"
-  ],
-  answer: 1
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Which feature protects the database from vulnerabilities automatically?",
-  options: [
-    "Self-securing",
-    "Manual patching",
-    "Firewall",
-    "VCN rules"
+    "SQL Worksheet",
+    "Monitoring",
+    "Logging",
+    "Vault"
   ],
   answer: 0
 },
@@ -162,24 +150,12 @@ const questions = [
 
 {
   topic: "Autonomous Database",
-  question: "Which OCI service hosts Autonomous Database?",
+  question: "Autonomous Database is built on which infrastructure?",
   options: [
-    "Compute",
-    "Database Service",
-    "Storage Gateway",
-    "VCN"
-  ],
-  answer: 1
-},
-
-{
-  topic: "Autonomous Database",
-  question: "A company wants a highly available database without manual configuration. What feature helps?",
-  options: [
-    "Manual clustering",
-    "Built-in high availability",
-    "Single instance",
-    "Local storage"
+    "Standard VM",
+    "Exadata infrastructure",
+    "File storage",
+    "Archive storage"
   ],
   answer: 1
 },
@@ -194,54 +170,6 @@ const questions = [
     "NSG rule"
   ],
   answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Which interface allows running SQL queries directly in the browser?",
-  options: [
-    "SQL Worksheet",
-    "Monitoring",
-    "Logging",
-    "Vault"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "A startup wants to start small and increase resources later. What feature supports this?",
-  options: [
-    "Auto scaling",
-    "Manual provisioning",
-    "Fixed capacity",
-    "Static compute"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Which database version is used in Autonomous Database?",
-  options: [
-    "Oracle Database",
-    "MySQL only",
-    "PostgreSQL only",
-    "MongoDB"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Autonomous Database is built on which infrastructure?",
-  options: [
-    "Standard VM",
-    "Exadata infrastructure",
-    "File storage",
-    "Archive storage"
-  ],
-  answer: 1
 },
 
 {
@@ -294,72 +222,24 @@ const questions = [
 
 {
   topic: "Autonomous Database",
+  question: "Which feature protects the database from vulnerabilities automatically?",
+  options: [
+    "Self-securing",
+    "Manual patching",
+    "Firewall",
+    "VCN rules"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
   question: "Autonomous Database automatically tunes which component?",
   options: [
     "SQL queries",
     "Internet routing",
     "DNS",
     "Firewall"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Which security feature isolates workloads?",
-  options: [
-    "Database roles and policies",
-    "Load balancer",
-    "Subnet only",
-    "Object storage"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Which capability allows data import easily?",
-  options: [
-    "Data Load tool",
-    "Manual upload",
-    "FTP server",
-    "DNS"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "A company wants minimal downtime for updates. What feature ensures this?",
-  options: [
-    "Automatic patching",
-    "Manual maintenance",
-    "Single node",
-    "Static updates"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Which component manages database users and roles?",
-  options: [
-    "Database security features",
-    "VCN",
-    "Subnet",
-    "Gateway"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "What is used to secure client connections?",
-  options: [
-    "TLS encryption",
-    "FTP",
-    "HTTP",
-    "DNS"
   ],
   answer: 0
 },
@@ -390,72 +270,12 @@ const questions = [
 
 {
   topic: "Autonomous Database",
-  question: "Which feature protects database from unauthorized access?",
-  options: [
-    "Built-in security controls",
-    "Public access",
-    "Open ports",
-    "No authentication"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Autonomous Database reduces operational overhead mainly through?",
-  options: [
-    "Automation",
-    "Manual tasks",
-    "External scripts",
-    "Third-party tools"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Which method allows developers to integrate apps with Autonomous Database?",
-  options: [
-    "Database APIs and drivers",
-    "FTP",
-    "DNS",
-    "NAT"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "A BI team wants fast analytics queries. Which Autonomous option should they choose?",
-  options: [
-    "ATP",
-    "ADW",
-    "Compute",
-    "Storage"
-  ],
-  answer: 1
-},
-
-{
-  topic: "Autonomous Database",
   question: "Which feature allows scaling without downtime?",
   options: [
     "Online scaling",
     "Manual restart",
     "Reboot",
     "Shutdown"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Which component manages schema and tables?",
-  options: [
-    "Database engine",
-    "VCN",
-    "Subnet",
-    "Gateway"
   ],
   answer: 0
 },
@@ -484,8 +304,190 @@ const questions = [
   answer: 0
 },
 
+/* Additional Autonomous Database Questions (26–50) */
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature ensures automatic index creation for performance improvement?",
+  options: [
+    "Automatic Indexing",
+    "Manual Indexing",
+    "Static Indexing",
+    "External Indexing"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "What type of scaling adjusts CPU resources automatically?",
+  options: [
+    "Auto Scaling",
+    "Manual Scaling",
+    "Static Scaling",
+    "Fixed Scaling"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which OCI component secures database credentials?",
+  options: [
+    "OCI Vault",
+    "Object Storage",
+    "VCN",
+    "Subnet"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which connectivity method allows private access to Autonomous Database?",
+  options: [
+    "Private Endpoint",
+    "Public FTP",
+    "Direct DNS",
+    "Open Internet"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature provides continuous database health monitoring?",
+  options: [
+    "OCI Monitoring",
+    "DNS Monitoring",
+    "FTP Monitoring",
+    "Storage Monitoring"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which component manages database schemas and tables?",
+  options: [
+    "Database Engine",
+    "VCN",
+    "Load Balancer",
+    "Object Storage"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "What ensures minimal downtime during database maintenance?",
+  options: [
+    "Automatic patching",
+    "Manual patching",
+    "Scheduled shutdown",
+    "Restart"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature automatically optimizes SQL performance?",
+  options: [
+    "Self-tuning",
+    "Manual tuning",
+    "External tuning",
+    "Fixed tuning"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which OCI service stores database backups?",
+  options: [
+    "Object Storage",
+    "Block Storage",
+    "File Storage",
+    "Archive only"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which capability allows developers to load data easily?",
+  options: [
+    "Data Load tool",
+    "Manual import",
+    "FTP upload",
+    "CLI only"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature isolates workloads securely?",
+  options: [
+    "Database roles and policies",
+    "Subnet",
+    "Load balancer",
+    "Compute"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which service provides alert notifications?",
+  options: [
+    "OCI Notifications",
+    "DNS",
+    "FTP",
+    "Compute"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which operation reduces cost during non-business hours?",
+  options: [
+    "Stop database",
+    "Delete storage",
+    "Disable VCN",
+    "Remove subnet"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which interface allows REST API access?",
+  options: [
+    "Database APIs",
+    "FTP",
+    "DNS",
+    "SMTP"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which deployment option provides dedicated infrastructure?",
+  options: [
+    "Dedicated Autonomous Database",
+    "Shared only",
+    "Local DB",
+    "Manual DB"
+  ],
+  answer: 0
+},
+
 /* ================================
-2. AI Fundamentals (41–90)
+2. AI Fundamentals (51–90)
 ================================ */
 
 {
@@ -508,6 +510,30 @@ const questions = [
     "Network devices",
     "Storage disks",
     "Subnets"
+  ],
+  answer: 0
+},
+
+{
+  topic: "AI Basics",
+  question: "Which AI technique learns from data patterns?",
+  options: [
+    "Machine Learning",
+    "Networking",
+    "Storage scaling",
+    "DNS routing"
+  ],
+  answer: 0
+},
+
+{
+  topic: "AI Basics",
+  question: "AI models require what to improve accuracy?",
+  options: [
+    "Quality data",
+    "Extra servers",
+    "Networking devices",
+    "Manual routing"
   ],
   answer: 0
 },
@@ -537,6 +563,30 @@ const questions = [
 },
 
 {
+  topic: "Credentials & Security",
+  question: "Which service securely stores secrets?",
+  options: [
+    "Secrets manager",
+    "Public storage",
+    "DNS",
+    "FTP"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Credentials & Security",
+  question: "What helps prevent unauthorized access?",
+  options: [
+    "Access policies",
+    "Open internet",
+    "Public login",
+    "No authentication"
+  ],
+  answer: 0
+},
+
+{
   topic: "Deep Links",
   question: "What is a deep link in an AI-enabled application?",
   options: [
@@ -561,6 +611,30 @@ const questions = [
 },
 
 {
+  topic: "Events",
+  question: "Event-driven systems respond when?",
+  options: [
+    "An event occurs",
+    "Server stops",
+    "Network fails",
+    "Database shuts down"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Deep Links",
+  question: "Deep links improve what in applications?",
+  options: [
+    "User navigation",
+    "Storage size",
+    "Network speed",
+    "Server uptime"
+  ],
+  answer: 0
+},
+
+{
   topic: "LLM",
   question: "What does LLM stand for?",
   options: [
@@ -568,18 +642,6 @@ const questions = [
     "Local Logic Module",
     "Large Learning Machine",
     "Logical Language Manager"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Prompt Engineering",
-  question: "Prompt engineering mainly focuses on?",
-  options: [
-    "Designing effective inputs for AI models",
-    "Networking design",
-    "Database indexing",
-    "Storage optimization"
   ],
   answer: 0
 },
@@ -597,6 +659,54 @@ const questions = [
 },
 
 {
+  topic: "Prompt Engineering",
+  question: "Prompt engineering mainly focuses on?",
+  options: [
+    "Designing effective inputs for AI models",
+    "Networking design",
+    "Database indexing",
+    "Storage optimization"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Prompt Engineering",
+  question: "Which prompting technique provides examples to the model?",
+  options: [
+    "Few-shot prompting",
+    "No prompting",
+    "Static prompting",
+    "Manual prompting"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Prompt Engineering",
+  question: "Which prompting technique uses no examples?",
+  options: [
+    "Zero-shot prompting",
+    "Multi prompting",
+    "Complex prompting",
+    "Static prompting"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Prompt Engineering",
+  question: "Hallucination in AI means?",
+  options: [
+    "Incorrect or fabricated response",
+    "Network failure",
+    "Server restart",
+    "Database crash"
+  ],
+  answer: 0
+},
+
+{
   topic: "UI Integration",
   question: "What does VBCS stand for?",
   options: [
@@ -604,6 +714,78 @@ const questions = [
     "Virtual Business Cloud Server",
     "Visual Backend Compute Service",
     "Virtual Builder Compute Stack"
+  ],
+  answer: 0
+},
+
+{
+  topic: "UI Integration",
+  question: "VBCS is mainly used for?",
+  options: [
+    "Building web applications visually",
+    "Storage management",
+    "Networking",
+    "Backup"
+  ],
+  answer: 0
+},
+
+{
+  topic: "UI Integration",
+  question: "AI chatbots can be embedded in?",
+  options: [
+    "Web applications",
+    "Routers",
+    "Switches",
+    "Storage disks"
+  ],
+  answer: 0
+},
+
+{
+  topic: "AI Agent Patterns",
+  question: "What is an AI agent?",
+  options: [
+    "Software that performs tasks autonomously",
+    "Network router",
+    "Database engine",
+    "Storage device"
+  ],
+  answer: 0
+},
+
+{
+  topic: "AI Agent Patterns",
+  question: "Multi-agent systems involve?",
+  options: [
+    "Multiple AI agents collaborating",
+    "Multiple networks",
+    "Multiple disks",
+    "Multiple subnets"
+  ],
+  answer: 0
+},
+
+{
+  topic: "AI Agent Patterns",
+  question: "AI agents can interact with?",
+  options: [
+    "APIs and tools",
+    "Only storage",
+    "Only DNS",
+    "Only networking"
+  ],
+  answer: 0
+},
+
+{
+  topic: "AI Agent Patterns",
+  question: "Advanced AI workflows enable?",
+  options: [
+    "Automated intelligent decision making",
+    "Manual processing",
+    "Storage reduction",
+    "Network routing"
   ],
   answer: 0
 }
