@@ -1,497 +1,609 @@
 const questions = [
 
 /* ================================
-1. Autonomous Database Basics (1–10)
+1. OCI Autonomous Database (1–40)
 ================================ */
 
 {
-  topic: "Autonomous Database Basics",
-  question: "What is Oracle Autonomous Database in Oracle Cloud Infrastructure?",
+  topic: "Autonomous Database",
+  question: "What is the primary benefit of Oracle Cloud Autonomous Database?",
   options: [
-    "A manually managed database service",
-    "A self-driving, self-securing, and self-repairing database service",
-    "A storage service",
-    "A networking service"
+    "Manual database administration",
+    "Self-driving, self-securing, self-repairing database",
+    "Only storage service",
+    "Networking service"
   ],
   answer: 1
 },
 
 {
-  topic: "Autonomous Database Basics",
-  question: "Which feature automatically tunes queries and indexes in Autonomous Database?",
+  topic: "Autonomous Database",
+  question: "Which task is automatically handled by Autonomous Database?",
   options: [
-    "Manual DBA tuning",
-    "Self-tuning capability",
-    "VCN optimization",
-    "Compute scaling"
+    "Manual patching",
+    "Automatic patching and updates",
+    "Manual scaling",
+    "Manual backups"
   ],
   answer: 1
 },
 
 {
-  topic: "Autonomous Database Basics",
-  question: "Which type of workload is Autonomous Transaction Processing (ATP) mainly designed for?",
+  topic: "Autonomous Database",
+  question: "A company wants automatic database tuning without DBA intervention. What should they use?",
+  options: [
+    "Compute instance",
+    "Autonomous Database",
+    "Block Storage",
+    "Load Balancer"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature allows Autonomous Database to automatically increase or decrease compute resources?",
+  options: [
+    "Auto Backup",
+    "Auto Scaling",
+    "Auto Networking",
+    "Auto Routing"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Transaction Processing (ATP) is best suited for which workload?",
   options: [
     "OLTP applications",
     "Data warehousing",
-    "Backup storage",
-    "File management"
+    "Video streaming",
+    "Networking"
   ],
   answer: 0
 },
 
 {
-  topic: "Autonomous Database Basics",
-  question: "Which Autonomous Database type is optimized for analytics and reporting?",
+  topic: "Autonomous Database",
+  question: "Autonomous Data Warehouse (ADW) is mainly designed for which type of workload?",
+  options: [
+    "Transactional systems",
+    "Analytics and reporting",
+    "Web hosting",
+    "Networking"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which storage type is used by Autonomous Database?",
+  options: [
+    "Local storage only",
+    "Oracle Exadata Storage",
+    "File storage",
+    "Archive storage"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "A company wants built-in encryption for all database data. What does Autonomous Database provide?",
+  options: [
+    "Optional encryption",
+    "Automatic encryption at rest and in transit",
+    "No encryption",
+    "Manual encryption"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature automatically creates database backups?",
+  options: [
+    "Auto Backup",
+    "Manual Snapshot",
+    "Block Volume",
+    "VCN Backup"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "How do users connect securely to Autonomous Database?",
+  options: [
+    "Wallet file",
+    "Public IP only",
+    "FTP",
+    "SSH"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "A developer wants to query data using SQL tools like SQL Developer. Is this supported?",
+  options: [
+    "No",
+    "Yes",
+    "Only CLI",
+    "Only API"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature protects the database from vulnerabilities automatically?",
+  options: [
+    "Self-securing",
+    "Manual patching",
+    "Firewall",
+    "VCN rules"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database reduces the need for which role?",
+  options: [
+    "Network engineer",
+    "Database administrator for routine tasks",
+    "Developer",
+    "Security analyst"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which OCI service hosts Autonomous Database?",
+  options: [
+    "Compute",
+    "Database Service",
+    "Storage Gateway",
+    "VCN"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "A company wants a highly available database without manual configuration. What feature helps?",
+  options: [
+    "Manual clustering",
+    "Built-in high availability",
+    "Single instance",
+    "Local storage"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "What is required before connecting to Autonomous Database from a client machine?",
+  options: [
+    "Wallet download",
+    "Instance reboot",
+    "VCN creation",
+    "NSG rule"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which interface allows running SQL queries directly in the browser?",
+  options: [
+    "SQL Worksheet",
+    "Monitoring",
+    "Logging",
+    "Vault"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "A startup wants to start small and increase resources later. What feature supports this?",
+  options: [
+    "Auto scaling",
+    "Manual provisioning",
+    "Fixed capacity",
+    "Static compute"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which database version is used in Autonomous Database?",
+  options: [
+    "Oracle Database",
+    "MySQL only",
+    "PostgreSQL only",
+    "MongoDB"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database is built on which infrastructure?",
+  options: [
+    "Standard VM",
+    "Exadata infrastructure",
+    "File storage",
+    "Archive storage"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which tool helps monitor Autonomous Database performance?",
+  options: [
+    "OCI Monitoring",
+    "FTP",
+    "DNS",
+    "IAM"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "A company wants to stop database when not in use to save cost. What feature is available?",
+  options: [
+    "Stop/Start database",
+    "Delete instance",
+    "Disable storage",
+    "Disable networking"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which workload type focuses on analytics queries?",
   options: [
     "ATP",
     "ADW",
-    "Block Storage",
+    "Compute",
     "Object Storage"
   ],
   answer: 1
 },
 
 {
-  topic: "Autonomous Database Basics",
-  question: "A company wants automatic patching without downtime. What feature provides this?",
+  topic: "Autonomous Database",
+  question: "Which workload type focuses on transactions?",
   options: [
-    "Manual upgrade",
-    "Autonomous patching",
-    "Backup policy",
-    "Compute scaling"
+    "ADW",
+    "ATP",
+    "Storage",
+    "Networking"
   ],
   answer: 1
 },
 
 {
-  topic: "Autonomous Database Basics",
-  question: "What is a key benefit of Autonomous Database?",
+  topic: "Autonomous Database",
+  question: "Autonomous Database automatically tunes which component?",
   options: [
-    "Requires full-time DBA management",
-    "Manual scaling only",
-    "Automated operations and reduced administration",
-    "No security features"
-  ],
-  answer: 2
-},
-
-{
-  topic: "Autonomous Database Basics",
-  question: "Autonomous Database runs on which infrastructure in OCI?",
-  options: [
-    "Exadata infrastructure",
-    "Block storage servers",
-    "Object storage cluster",
-    "Compute instances only"
+    "SQL queries",
+    "Internet routing",
+    "DNS",
+    "Firewall"
   ],
   answer: 0
 },
 
 {
-  topic: "Autonomous Database Basics",
-  question: "Which feature protects data automatically in Autonomous Database?",
+  topic: "Autonomous Database",
+  question: "Which security feature isolates workloads?",
   options: [
-    "Automatic encryption",
-    "Manual encryption",
-    "Optional encryption",
-    "No encryption"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Basics",
-  question: "A startup wants a database that manages backups automatically. Which service should they use?",
-  options: [
-    "Compute DB",
-    "Autonomous Database",
-    "Manual Oracle DB",
-    "File storage DB"
-  ],
-  answer: 1
-},
-
-{
-  topic: "Autonomous Database Basics",
-  question: "Which database operations are automated in Autonomous Database?",
-  options: [
-    "Patching, backup, tuning",
-    "Only storage",
-    "Only networking",
-    "Only monitoring"
-  ],
-  answer: 0
-},
-
-/* ================================
-2. Deployment & Connectivity (11–20)
-================================ */
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "Before creating an Autonomous Database, what must be selected first?",
-  options: [
-    "Compartment",
-    "Block volume",
+    "Database roles and policies",
     "Load balancer",
-    "DNS zone"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "Which network access option allows secure private connectivity to Autonomous Database?",
-  options: [
-    "Public endpoint only",
-    "Private endpoint with VCN",
-    "Internet gateway",
-    "Object storage"
-  ],
-  answer: 1
-},
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "A developer wants to connect using SQL Developer. What is required?",
-  options: [
-    "Wallet file",
-    "Block storage",
-    "VCN peering",
-    "Compute instance"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "Which file contains credentials and connection details for Autonomous DB connection?",
-  options: [
-    "Wallet",
-    "Route table",
-    "Security list",
-    "API gateway"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "Which protocol is commonly used to connect securely to Autonomous Database?",
-  options: [
-    "TCP with TLS",
-    "FTP",
-    "HTTP",
-    "SMTP"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "A company wants internal application servers to access Autonomous Database privately. What should be used?",
-  options: [
-    "Private endpoint",
-    "Public internet access",
-    "Load balancer",
+    "Subnet only",
     "Object storage"
   ],
   answer: 0
 },
 
 {
-  topic: "Autonomous Database Deployment",
-  question: "What is required to download the Autonomous Database wallet?",
+  topic: "Autonomous Database",
+  question: "Which capability allows data import easily?",
   options: [
-    "Database password",
-    "Public IP",
-    "Subnet",
-    "IAM policy only"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "Which tool can be used to manage Autonomous Database through browser?",
-  options: [
-    "Database Actions",
-    "Compute console",
-    "Storage explorer",
-    "Route manager"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "A DBA wants to connect from an on-premises network securely. What option is recommended?",
-  options: [
-    "VPN or FastConnect",
-    "Public FTP",
-    "NAT gateway only",
-    "Block volume"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Deployment",
-  question: "Which component controls who can create Autonomous Databases?",
-  options: [
-    "IAM policies",
-    "Route tables",
-    "VCN",
-    "Block volume"
-  ],
-  answer: 0
-},
-
-/* ================================
-3. Scaling, Backup, and Management (21–30)
-================================ */
-
-{
-  topic: "Autonomous Database Management",
-  question: "A company experiences sudden workload spikes and wants the database to scale automatically. What feature should be enabled?",
-  options: [
-    "Auto scaling",
-    "Manual resize",
-    "Storage scaling only",
-    "Compute restart"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "Which resource can be scaled independently in Autonomous Database?",
-  options: [
-    "CPU and storage",
-    "Only CPU",
-    "Only network",
-    "Only subnet"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "Autonomous Database backups are stored where?",
-  options: [
-    "Object Storage",
-    "Block Volume",
-    "Local disk",
-    "File system"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "What type of backups are automatically performed?",
-  options: [
-    "Daily automatic backups",
-    "Manual backups only",
-    "No backups",
-    "Weekly manual backups"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "A team wants to restore the database to a previous point in time. What feature helps?",
-  options: [
-    "Point-in-time recovery",
-    "Recreate database",
-    "New subnet",
-    "VCN cloning"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "Which console feature allows performance monitoring?",
-  options: [
-    "Database metrics and monitoring",
-    "Object lifecycle",
-    "Network logs",
-    "DNS manager"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "A DBA wants to stop the database to save cost temporarily. What action is possible?",
-  options: [
-    "Stop and start Autonomous DB",
-    "Delete database",
-    "Detach storage",
-    "Shutdown VCN"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "Which feature improves query performance automatically?",
-  options: [
-    "Automatic indexing",
-    "Manual indexing only",
-    "Storage tuning",
-    "Network tuning"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "Which dashboard shows SQL performance details?",
-  options: [
-    "Performance Hub",
-    "IAM console",
-    "VCN dashboard",
-    "Object storage UI"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Management",
-  question: "A team wants alerts when database CPU usage is high. What should be configured?",
-  options: [
-    "Monitoring alarms",
-    "VCN logs",
-    "Storage rules",
-    "Route rules"
-  ],
-  answer: 0
-},
-
-/* ================================
-4. Security & Use Cases (31–40)
-================================ */
-
-{
-  topic: "Autonomous Database Security",
-  question: "How is data protected at rest in Autonomous Database?",
-  options: [
-    "Automatic encryption",
-    "Manual encryption",
-    "Optional encryption",
-    "No encryption"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Security",
-  question: "Which service manages encryption keys in OCI?",
-  options: [
-    "OCI Vault",
-    "VCN",
-    "Block storage",
+    "Data Load tool",
+    "Manual upload",
+    "FTP server",
     "DNS"
   ],
   answer: 0
 },
 
 {
-  topic: "Autonomous Database Security",
-  question: "A company wants to restrict access to Autonomous Database only from specific IP addresses. What should be configured?",
+  topic: "Autonomous Database",
+  question: "A company wants minimal downtime for updates. What feature ensures this?",
   options: [
-    "Access control list",
-    "Block storage",
-    "Object storage rule",
+    "Automatic patching",
+    "Manual maintenance",
+    "Single node",
+    "Static updates"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which component manages database users and roles?",
+  options: [
+    "Database security features",
+    "VCN",
+    "Subnet",
+    "Gateway"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "What is used to secure client connections?",
+  options: [
+    "TLS encryption",
+    "FTP",
+    "HTTP",
+    "DNS"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which operation helps recover data after accidental deletion?",
+  options: [
+    "Backup and restore",
+    "Reboot",
+    "Restart network",
+    "Scaling"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which tool helps visualize query performance?",
+  options: [
+    "Performance Hub",
+    "Object storage",
+    "Compute",
+    "VCN"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature protects database from unauthorized access?",
+  options: [
+    "Built-in security controls",
+    "Public access",
+    "Open ports",
+    "No authentication"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database reduces operational overhead mainly through?",
+  options: [
+    "Automation",
+    "Manual tasks",
+    "External scripts",
+    "Third-party tools"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which method allows developers to integrate apps with Autonomous Database?",
+  options: [
+    "Database APIs and drivers",
+    "FTP",
+    "DNS",
+    "NAT"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "A BI team wants fast analytics queries. Which Autonomous option should they choose?",
+  options: [
+    "ATP",
+    "ADW",
+    "Compute",
+    "Storage"
+  ],
+  answer: 1
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which feature allows scaling without downtime?",
+  options: [
+    "Online scaling",
+    "Manual restart",
+    "Reboot",
+    "Shutdown"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which component manages schema and tables?",
+  options: [
+    "Database engine",
+    "VCN",
+    "Subnet",
+    "Gateway"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Which service helps monitor alerts for database performance?",
+  options: [
+    "OCI Alarms",
+    "DNS",
+    "FTP",
+    "Object Storage"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database is considered a?",
+  options: [
+    "Fully managed database service",
+    "Manual database",
+    "Networking service",
+    "Storage device"
+  ],
+  answer: 0
+},
+
+/* ================================
+2. AI Fundamentals (41–90)
+================================ */
+
+{
+  topic: "AI Basics",
+  question: "What is the main goal of Artificial Intelligence in business applications?",
+  options: [
+    "Automate decision making and insights",
+    "Replace databases",
+    "Manage networking",
+    "Replace storage"
+  ],
+  answer: 0
+},
+
+{
+  topic: "AI Basics",
+  question: "Business Objects in AI systems usually represent?",
+  options: [
+    "Business entities like customers or orders",
+    "Network devices",
+    "Storage disks",
+    "Subnets"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Credentials & Security",
+  question: "AI services should use what for secure authentication?",
+  options: [
+    "Credentials or tokens",
+    "Public passwords",
+    "Open access",
+    "FTP"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Credentials & Security",
+  question: "What is the purpose of role-based access in AI systems?",
+  options: [
+    "Control who can access AI features",
+    "Increase storage",
+    "Improve network",
+    "Scale compute"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Deep Links",
+  question: "What is a deep link in an AI-enabled application?",
+  options: [
+    "Direct link to a specific application page",
+    "Network route",
+    "Database link",
+    "API key"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Events",
+  question: "Events in AI applications are used to?",
+  options: [
+    "Trigger actions automatically",
+    "Delete data",
+    "Restart servers",
+    "Disable apps"
+  ],
+  answer: 0
+},
+
+{
+  topic: "LLM",
+  question: "What does LLM stand for?",
+  options: [
+    "Large Language Model",
+    "Local Logic Module",
+    "Large Learning Machine",
+    "Logical Language Manager"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Prompt Engineering",
+  question: "Prompt engineering mainly focuses on?",
+  options: [
+    "Designing effective inputs for AI models",
+    "Networking design",
+    "Database indexing",
+    "Storage optimization"
+  ],
+  answer: 0
+},
+
+{
+  topic: "LLM",
+  question: "LLMs are commonly used for?",
+  options: [
+    "Text generation and understanding",
+    "Storage replication",
+    "Networking routing",
     "Compute scaling"
   ],
   answer: 0
 },
 
 {
-  topic: "Autonomous Database Security",
-  question: "Which authentication method can be used for secure database access?",
+  topic: "UI Integration",
+  question: "What does VBCS stand for?",
   options: [
-    "Database users and IAM integration",
-    "Public login",
-    "Anonymous access",
-    "Open access"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Security",
-  question: "A financial company needs secure data analytics with minimal administration. What should they use?",
-  options: [
-    "Autonomous Data Warehouse",
-    "Manual database",
-    "File storage",
-    "Block storage"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Security",
-  question: "A retail application requires fast transaction processing. Which database type is suitable?",
-  options: [
-    "Autonomous Transaction Processing",
-    "Data Warehouse",
-    "Archive storage",
-    "File storage"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Security",
-  question: "Which feature helps detect and fix vulnerabilities automatically?",
-  options: [
-    "Self-securing capability",
-    "Manual patching",
-    "VCN firewall",
-    "Load balancer"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Security",
-  question: "Which OCI service helps control who can manage Autonomous Databases?",
-  options: [
-    "IAM",
-    "VCN",
-    "DNS",
-    "Object storage"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Security",
-  question: "A company wants to audit database activity. What should be enabled?",
-  options: [
-    "Database auditing",
-    "Object lifecycle",
-    "Network route",
-    "Storage scaling"
-  ],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database Security",
-  question: "What is the main advantage of Autonomous Database for organizations?",
-  options: [
-    "Reduced operational effort with automation",
-    "Manual management required",
-    "No scaling support",
-    "No security"
+    "Visual Builder Cloud Service",
+    "Virtual Business Cloud Server",
+    "Visual Backend Compute Service",
+    "Virtual Builder Compute Stack"
   ],
   answer: 0
 }
