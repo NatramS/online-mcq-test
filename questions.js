@@ -28,12 +28,34 @@ const questions = [
 },
 {
   topic: "Autonomous Database",
-  question: "A company wants automatic database tuning without DBA intervention. What should they use?",
+  question: "ATP is mainly used for?",
   options: [
-    "Compute instance",
-    "Autonomous Database",
-    "Block Storage",
-    "Load Balancer"
+    "OLTP workloads",
+    "Analytics workloads",
+    "File storage",
+    "Networking"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "ADW is mainly designed for?",
+  options: [
+    "Transaction processing",
+    "Analytics and data warehousing",
+    "DNS services",
+    "Email hosting"
+  ],
+  answer: 1
+},
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database runs on which infrastructure?",
+  options: [
+    "Standard VM",
+    "Exadata infrastructure",
+    "Local server",
+    "Tape storage"
   ],
   answer: 1
 },
@@ -43,293 +65,388 @@ const questions = [
   options: [
     "Auto Backup",
     "Auto Scaling",
-    "Auto Networking",
-    "Auto Routing"
+    "Auto Routing",
+    "Auto Storage"
   ],
   answer: 1
 },
 {
   topic: "Autonomous Database",
-  question: "ATP is mainly used for?",
+  question: "Data encryption in Autonomous Database occurs?",
   options: [
-    "OLTP workloads",
-    "Analytics",
-    "Streaming",
-    "Networking"
-  ],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "ADW is mainly used for?",
-  options: [
-    "Transactions",
-    "Analytics workloads",
-    "Email servers",
-    "Networking"
+    "Only manually",
+    "Automatically at rest and in transit",
+    "Only during backup",
+    "Not encrypted"
   ],
   answer: 1
 },
 {
   topic: "Autonomous Database",
-  question: "Autonomous Database runs on which infrastructure?",
-  options: [
-    "Standard VM",
-    "Exadata",
-    "Local disk",
-    "Tape storage"
-  ],
-  answer: 1
-},
-{
-  topic: "Autonomous Database",
-  question: "Data in Autonomous Database is encrypted?",
-  options: [
-    "Manually",
-    "Automatically at rest and transit",
-    "Not encrypted",
-    "Optional only"
-  ],
-  answer: 1
-},
-{
-  topic: "Autonomous Database",
-  question: "Which feature creates backups automatically?",
-  options: [
-    "Auto Backup",
-    "Snapshot",
-    "Manual export",
-    "Archive tool"
-  ],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "Secure connection requires?",
+  question: "Which component is required for secure DB connection?",
   options: [
     "Wallet",
     "FTP",
-    "Public login",
-    "Telnet"
+    "SMTP",
+    "Public login"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Which feature creates automatic backups?",
+  options: [
+    "Auto Backup",
+    "Archive logs",
+    "Manual export",
+    "Snapshot tool"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "SQL queries in browser can be executed using?",
+  options: [
+    "SQL Worksheet",
+    "IAM",
+    "DNS",
+    "Vault"
   ],
   answer: 0
 },
 
-/* 11–50 */
-
-{
-  topic: "Autonomous Database",
-  question: "Which tool allows SQL queries in browser?",
-  options: ["SQL Worksheet","Monitoring","Logging","Vault"],
-  answer: 0
-},
 {
   topic: "Autonomous Database",
   question: "Automatic indexing improves?",
-  options: ["Performance","Storage","Network","Security"],
+  options: [
+    "Performance",
+    "Networking",
+    "DNS",
+    "Routing"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Autonomous Database reduces operational?",
-  options: ["Automation overhead","Networking","Storage","DNS"],
+  question: "Autonomous Database reduces?",
+  options: [
+    "Operational overhead",
+    "Network speed",
+    "Storage size",
+    "DNS usage"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Which service monitors metrics?",
-  options: ["OCI Monitoring","FTP","IAM","DNS"],
+  question: "Which OCI service monitors metrics?",
+  options: [
+    "OCI Monitoring",
+    "FTP",
+    "IAM",
+    "DNS"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
   question: "Database lifecycle state includes?",
-  options: ["Available","Broken","Networked","Detached"],
+  options: [
+    "Available",
+    "Disconnected",
+    "Router",
+    "Subnet"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Scaling compute happens?",
-  options: ["Online","Offline only","Never","Manual reboot"],
+  question: "Scaling compute resources happens?",
+  options: [
+    "Online",
+    "Only offline",
+    "Never",
+    "Manual reboot"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Backups stored in?",
-  options: ["Object Storage","Block Storage","Local Disk","Tape"],
+  question: "Backups are stored in?",
+  options: [
+    "Object Storage",
+    "Block Storage",
+    "Local disk",
+    "Tape"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Which interface allows REST access?",
-  options: ["API","FTP","SMTP","DNS"],
+  question: "Private connectivity is enabled using?",
+  options: [
+    "Private endpoint",
+    "FTP",
+    "SMTP",
+    "DNS"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Security updates applied?",
-  options: ["Automatically","Manually","Never","Quarterly manual"],
+  question: "Security updates are applied?",
+  options: [
+    "Automatically",
+    "Manually",
+    "Never",
+    "Only yearly"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Database workload isolation handled by?",
-  options: ["Roles and policies","Subnet","VCN","Gateway"],
+  question: "Database stop/start helps in?",
+  options: [
+    "Cost optimization",
+    "Networking",
+    "Storage",
+    "DNS"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Autonomous DB is a?",
+  options: [
+    "Managed service",
+    "Local DB",
+    "Manual DB",
+    "Standalone DB"
+  ],
   answer: 0
 },
 
 {
   topic: "Autonomous Database",
-  question: "Which feature optimizes SQL automatically?",
-  options: ["Self tuning","Manual tuning","External tuning","Static tuning"],
+  question: "Automatic SQL optimization is done using?",
+  options: [
+    "Self tuning",
+    "Manual tuning",
+    "External tool",
+    "Static configuration"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Private connectivity uses?",
-  options: ["Private endpoint","FTP","Public DNS","SMTP"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "Database stop/start helps?",
-  options: ["Cost saving","Security","Networking","Storage"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "Autonomous DB belongs to?",
-  options: ["Managed service","Local DB","Manual DB","Standalone DB"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "Which component manages tables?",
-  options: ["Database engine","Subnet","VCN","Load balancer"],
-  answer: 0
-},
-
-{
-  topic: "Autonomous Database",
-  question: "Alerts are generated using?",
-  options: ["OCI Alarms","DNS","FTP","IAM"],
+  question: "Alerts are created using?",
+  options: [
+    "OCI Alarms",
+    "FTP",
+    "DNS",
+    "SMTP"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
   question: "Data loading can be done using?",
-  options: ["Data Load Tool","FTP only","CLI only","Manual import"],
+  options: [
+    "Data Load Tool",
+    "Only CLI",
+    "Only FTP",
+    "Manual copy"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
   question: "Automatic patching improves?",
-  options: ["Security","Network","Storage","Bandwidth"],
+  options: [
+    "Security",
+    "Routing",
+    "DNS",
+    "Subnet"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "Schema management done by?",
-  options: ["Database","VCN","Gateway","Subnet"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "SQL Developer can connect?",
-  options: ["Yes","No","Only CLI","Only API"],
+  question: "SQL Developer connectivity supported?",
+  options: [
+    "Yes",
+    "No",
+    "Only CLI",
+    "Only API"
+  ],
   answer: 0
 },
 
 {
   topic: "Autonomous Database",
-  question: "Automatic tuning affects?",
-  options: ["SQL performance","DNS","Networking","Storage"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
   question: "Backup retention ensures?",
-  options: ["Data recovery","Network speed","Scaling","Routing"],
+  options: [
+    "Data recovery",
+    "Networking",
+    "Routing",
+    "DNS"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
   question: "Exadata provides?",
-  options: ["High performance","Low network","Manual storage","DNS"],
+  options: [
+    "High performance",
+    "Low speed",
+    "Manual scaling",
+    "No storage"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "ADW mainly supports?",
-  options: ["Analytics queries","OLTP","Streaming","Routing"],
+  question: "Autonomous Database automates?",
+  options: [
+    "Management tasks",
+    "Networking",
+    "Router setup",
+    "DNS config"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
-  question: "ATP supports?",
-  options: ["Transactions","Analytics","Logging","Routing"],
+  question: "Which model reduces DBA effort?",
+  options: [
+    "Automation",
+    "Manual process",
+    "Scripted",
+    "External"
+  ],
   answer: 0
 },
-
-{
-  topic: "Autonomous Database",
-  question: "Which feature enables continuous monitoring?",
-  options: ["Monitoring service","DNS","FTP","Email"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "Database restore uses?",
-  options: ["Backup","Scaling","DNS","Routing"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "Client connection secured with?",
-  options: ["TLS","FTP","HTTP","SMTP"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "Autonomous DB automates?",
-  options: ["Management tasks","Networking","Storage buying","DNS"],
-  answer: 0
-},
-{
-  topic: "Autonomous Database",
-  question: "Which model reduces DBA work?",
-  options: ["Automation","Manual","External","Scripted"],
-  answer: 0
-},
-
 {
   topic: "Autonomous Database",
   question: "Which OCI tool manages secrets?",
-  options: ["Vault","DNS","FTP","Email"],
+  options: [
+    "Vault",
+    "DNS",
+    "FTP",
+    "SMTP"
+  ],
   answer: 0
 },
+
 {
   topic: "Autonomous Database",
-  question: "Scaling storage is?",
-  options: ["Online","Offline only","Manual only","Unavailable"],
+  question: "Storage scaling is?",
+  options: [
+    "Online",
+    "Offline only",
+    "Manual only",
+    "Unavailable"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
   question: "Autonomous DB provides?",
-  options: ["High availability","Single point","Manual failover","No HA"],
+  options: [
+    "High availability",
+    "Single instance only",
+    "Manual failover",
+    "No redundancy"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
   question: "Database compute measured in?",
-  options: ["OCPU","RAM","Disk","GPU"],
+  options: [
+    "OCPU",
+    "RAM",
+    "Disk",
+    "GPU"
+  ],
   answer: 0
 },
 {
   topic: "Autonomous Database",
   question: "Dedicated deployment provides?",
-  options: ["Isolated infrastructure","Shared only","Public network","Manual setup"],
+  options: [
+    "Isolated infrastructure",
+    "Shared only",
+    "Public network",
+    "Manual install"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Database restore uses?",
+  options: [
+    "Backup",
+    "Scaling",
+    "DNS",
+    "Routing"
+  ],
+  answer: 0
+},
+
+{
+  topic: "Autonomous Database",
+  question: "Monitoring dashboards show?",
+  options: [
+    "Performance metrics",
+    "Router logs",
+    "Disk repair",
+    "DNS records"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Automatic tuning affects?",
+  options: [
+    "SQL performance",
+    "Routing",
+    "DNS",
+    "Firewall"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Autonomous DB helps organizations?",
+  options: [
+    "Reduce operational effort",
+    "Increase manual work",
+    "Remove monitoring",
+    "Disable backups"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Workload type selected during?",
+  options: [
+    "Database creation",
+    "Deletion",
+    "Backup",
+    "Migration"
+  ],
+  answer: 0
+},
+{
+  topic: "Autonomous Database",
+  question: "Autonomous Database supports?",
+  options: [
+    "Analytics and transactions",
+    "Only storage",
+    "Only networking",
+    "Only DNS"
+  ],
   answer: 0
 },
 
@@ -339,187 +456,337 @@ const questions = [
 
 {
   topic: "AI Basics",
-  question: "AI helps businesses by?",
-  options: ["Automating decisions","Deleting data","Managing routers","Replacing storage"],
+  question: "AI helps organizations by?",
+  options: [
+    "Automating decisions",
+    "Deleting databases",
+    "Managing routers",
+    "Creating subnets"
+  ],
   answer: 0
 },
 {
   topic: "AI Basics",
-  question: "Machine learning is?",
-  options: ["Learning from data","Networking tool","Storage system","Firewall"],
+  question: "Machine learning means?",
+  options: [
+    "Learning from data",
+    "Networking automation",
+    "Disk optimization",
+    "Router configuration"
+  ],
   answer: 0
 },
 {
   topic: "AI Basics",
   question: "Business objects represent?",
-  options: ["Entities like orders","Routers","Switches","Disks"],
+  options: [
+    "Entities like customers or orders",
+    "Routers",
+    "Switches",
+    "Disks"
+  ],
   answer: 0
 },
 {
   topic: "AI Basics",
-  question: "AI accuracy depends on?",
-  options: ["Data quality","Network speed","Disk size","Router"],
+  question: "AI model accuracy depends on?",
+  options: [
+    "Quality of data",
+    "Router speed",
+    "Disk size",
+    "Network cables"
+  ],
   answer: 0
 },
 {
   topic: "AI Basics",
   question: "AI models are trained using?",
-  options: ["Datasets","Subnets","Routers","VMs"],
+  options: [
+    "Datasets",
+    "Subnets",
+    "VMs",
+    "Gateways"
+  ],
   answer: 0
 },
 
 {
   topic: "Credentials & Security",
   question: "Secure authentication uses?",
-  options: ["Tokens","Open access","Public login","FTP"],
+  options: [
+    "Tokens",
+    "Public access",
+    "FTP",
+    "Anonymous login"
+  ],
   answer: 0
 },
 {
   topic: "Credentials & Security",
   question: "RBAC stands for?",
-  options: ["Role Based Access Control","Resource Backup Access","Routing Backup Access","Role Backup"],
+  options: [
+    "Role Based Access Control",
+    "Routing Backup Access Control",
+    "Resource Based Archive Control",
+    "Remote Backup Access"
+  ],
   answer: 0
 },
 {
   topic: "Credentials & Security",
   question: "Secrets should be stored in?",
-  options: ["Secrets Manager","Public repo","Email","DNS"],
+  options: [
+    "Secrets manager",
+    "Public repository",
+    "Email",
+    "DNS"
+  ],
   answer: 0
 },
 {
   topic: "Credentials & Security",
   question: "API security ensures?",
-  options: ["Authorized access","Open internet","Public routing","Manual login"],
+  options: [
+    "Authorized access",
+    "Public access",
+    "Open internet",
+    "No authentication"
+  ],
   answer: 0
 },
 {
   topic: "Credentials & Security",
   question: "Encryption protects?",
-  options: ["Sensitive data","DNS","Routing","Switch"],
+  options: [
+    "Sensitive data",
+    "DNS",
+    "Routing",
+    "Switch ports"
+  ],
   answer: 0
 },
 
 {
   topic: "Deep Links",
-  question: "Deep links allow?",
-  options: ["Direct navigation","Router config","Disk mounting","Subnet creation"],
+  question: "Deep links enable?",
+  options: [
+    "Direct navigation inside apps",
+    "Router configuration",
+    "Disk mount",
+    "Subnet creation"
+  ],
   answer: 0
 },
 {
   topic: "Events",
-  question: "Events trigger?",
-  options: ["Automated workflows","Storage resize","DNS reset","Router reboot"],
+  question: "Events are used to trigger?",
+  options: [
+    "Automated workflows",
+    "Router resets",
+    "Disk deletion",
+    "Manual login"
+  ],
   answer: 0
 },
 {
   topic: "Events",
   question: "Webhook is used for?",
-  options: ["Event notifications","Disk creation","Subnet change","Router config"],
+  options: [
+    "Event notifications",
+    "Storage resize",
+    "Subnet routing",
+    "DNS reset"
+  ],
   answer: 0
 },
 {
   topic: "Deep Links",
   question: "Deep links improve?",
-  options: ["User experience","Storage speed","Routing","DNS"],
+  options: [
+    "User experience",
+    "Disk speed",
+    "Routing",
+    "Firewall"
+  ],
   answer: 0
 },
 {
   topic: "Events",
   question: "Event-driven architecture reacts to?",
-  options: ["Events","Storage","Routers","VM reboot"],
+  options: [
+    "Events",
+    "Subnets",
+    "VM reboots",
+    "Router failures"
+  ],
   answer: 0
 },
 
 {
   topic: "LLM",
   question: "LLM stands for?",
-  options: ["Large Language Model","Local Logic Module","Large Logic Manager","Learning Machine"],
+  options: [
+    "Large Language Model",
+    "Local Logic Manager",
+    "Learning Layer Module",
+    "Large Learning Machine"
+  ],
   answer: 0
 },
 {
   topic: "LLM",
   question: "LLMs process?",
-  options: ["Natural language","Networking data","Routing tables","Disk sectors"],
+  options: [
+    "Natural language",
+    "Routing tables",
+    "Disk blocks",
+    "Firewall rules"
+  ],
   answer: 0
 },
 {
   topic: "Prompt Engineering",
   question: "Prompt engineering improves?",
-  options: ["Model responses","Storage","Routing","Firewall"],
+  options: [
+    "AI responses",
+    "Networking",
+    "Storage",
+    "Firewall"
+  ],
   answer: 0
 },
 {
   topic: "Prompt Engineering",
   question: "Few-shot prompting uses?",
-  options: ["Examples","No examples","Routers","Disks"],
+  options: [
+    "Examples",
+    "Routers",
+    "Switches",
+    "Subnets"
+  ],
   answer: 0
 },
 {
   topic: "Prompt Engineering",
   question: "Zero-shot prompting uses?",
-  options: ["No examples","Many examples","Routers","VMs"],
+  options: [
+    "No examples",
+    "Many examples",
+    "Routers",
+    "VM templates"
+  ],
   answer: 0
 },
 
 {
   topic: "Prompt Engineering",
-  question: "Hallucination means?",
-  options: ["Incorrect output","Router failure","Disk crash","DNS error"],
+  question: "Hallucination in AI means?",
+  options: [
+    "Incorrect output generated by AI",
+    "Router crash",
+    "Disk failure",
+    "DNS issue"
+  ],
   answer: 0
 },
 {
   topic: "LLM",
   question: "RAG stands for?",
-  options: ["Retrieval Augmented Generation","Random AI Generation","Routing AI Gateway","Rapid AI Growth"],
+  options: [
+    "Retrieval Augmented Generation",
+    "Rapid AI Gateway",
+    "Routing AI Group",
+    "Remote AI Generator"
+  ],
   answer: 0
 },
 {
   topic: "UI Integration",
   question: "VBCS stands for?",
-  options: ["Visual Builder Cloud Service","Virtual Backend Cloud","Visual Business Compute","Virtual Builder"],
+  options: [
+    "Visual Builder Cloud Service",
+    "Virtual Backend Cloud",
+    "Visual Business Compute",
+    "Virtual Builder Service"
+  ],
   answer: 0
 },
 {
   topic: "UI Integration",
   question: "VBCS helps build?",
-  options: ["Web apps visually","Routers","Disks","Subnets"],
+  options: [
+    "Web applications visually",
+    "Routers",
+    "Disks",
+    "Gateways"
+  ],
   answer: 0
 },
 {
   topic: "UI Integration",
   question: "AI chatbots integrate into?",
-  options: ["Applications","Routers","Switches","Storage"],
+  options: [
+    "Applications",
+    "Routers",
+    "Switches",
+    "Storage"
+  ],
   answer: 0
 },
 
 {
   topic: "AI Agent Patterns",
   question: "AI agent is?",
-  options: ["Autonomous software","Router","Disk","Subnet"],
+  options: [
+    "Autonomous software component",
+    "Router",
+    "Disk",
+    "Subnet"
+  ],
   answer: 0
 },
 {
   topic: "AI Agent Patterns",
   question: "Multi-agent systems mean?",
-  options: ["Agents working together","Routers working","Disks working","VM scaling"],
+  options: [
+    "Multiple agents working together",
+    "Multiple routers",
+    "Multiple disks",
+    "Multiple VMs"
+  ],
   answer: 0
 },
 {
   topic: "AI Agent Patterns",
   question: "Agents interact with?",
-  options: ["Tools and APIs","Routers","Disks","DNS"],
+  options: [
+    "Tools and APIs",
+    "Routers",
+    "Disks",
+    "DNS"
+  ],
   answer: 0
 },
 {
   topic: "AI Agent Patterns",
-  question: "Agent workflow enables?",
-  options: ["Automation","Manual work","Storage","Routing"],
+  question: "Agent workflows enable?",
+  options: [
+    "Automation",
+    "Manual work",
+    "Networking",
+    "Routing"
+  ],
   answer: 0
 },
 {
   topic: "AI Agent Patterns",
   question: "Tool-using agents can?",
-  options: ["Call external systems","Only respond","Only store","Only route"],
+  options: [
+    "Call external systems",
+    "Only respond",
+    "Only store",
+    "Only route"
+  ],
   answer: 0
 }
 
