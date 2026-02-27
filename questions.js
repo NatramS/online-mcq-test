@@ -1,9 +1,5 @@
 const questions = [
 
-/* ================================
-1. OCI Autonomous Database (1–30)
-================================ */
-
 {
   topic: "OCI Autonomous Database",
   question: "What is the main benefit of Autonomous Database?",
@@ -364,10 +360,6 @@ const questions = [
   answer: 0
 },
 
-/* ================================
-2. AI Foundations (31–60)
-================================ */
-
 {
   topic: "AI Foundations",
   question: "What is Artificial Intelligence?",
@@ -547,10 +539,6 @@ const questions = [
   ],
   answer: 0
 },
-
-/* ================================
-3. OCI Core + Cloud Concepts (61–90)
-================================ */
 
 {
   topic: "OCI Core",
